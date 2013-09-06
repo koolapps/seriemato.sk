@@ -1,4 +1,8 @@
 class Admin::IssuesController < ApplicationController
+  def index
+    @issues = Issue.all
+  end
+
   def new
     @issue = Issue.new
   end
@@ -7,7 +11,7 @@ class Admin::IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
     if @issue.save
       flash[:success] = 'Issue has been created.'
-      redirect_to edit_admin_issue_url @issue
+      redirect_to_edit_page
     else
       render :new
     end
@@ -17,7 +21,21 @@ class Admin::IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
   end
 
+  def update
+    @issue = Issue.new(issue_params)
+    if @issue.save
+      flash[:success] = 'Issue has been updated.'
+      redirect_to_edit_page
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def redirect_to_edit_page
+    redirect_to edit_admin_issue_url @issue
+  end
 
   def issue_params
     params.
@@ -25,7 +43,7 @@ class Admin::IssuesController < ApplicationController
       permit(:name,
              :short_description,
              :long_description,
-             :SMT_limit,
+             :smt_limit,
              :solvers_limit)
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for @issue, url: url, role: 'form' do |form| %>
+<%= form_for [:admin, @issue] do |form| %>
   <% if @issue.errors.any? %>
     <div class="alert alert-danger alert-block">
       Some errors occured:
@@ -22,8 +22,8 @@
 
   <div class="row">
   <div class="form-group col-sm-6">
-    <%= form.label :SMT_limit, 'SMT limit' %>
-    <%= form.text_field :SMT_limit, class: 'form-control' %>
+    <%= form.label :smt_limit, 'SMT limit' %>
+    <%= form.text_field :smt_limit, class: 'form-control' %>
   </div>
 
   <div class="form-group col-sm-6">

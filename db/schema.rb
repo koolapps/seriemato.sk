@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905191704) do
+ActiveRecord::Schema.define(version: 20130906130034) do
 
   create_table "issues", force: true do |t|
     t.string   "name"
     t.text     "short_description"
     t.text     "long_description"
-    t.string   "SMT_limit"
+    t.string   "smt_limit"
     t.string   "solvers_limit"
     t.datetime "created_at"
     t.datetime "updated_at"
