@@ -46,12 +46,16 @@ feature 'Manage issues' do
     fill_in 'SMT limit', with: 100
     fill_in 'Solvers limit', with: 30
     fill_in 'Long description', with: 'Long text'
+    fill_in 'Fake SMTs', with: 10
+    fill_in 'Fake solvers', with: 15
   end
 
   def validate_form
     expect(page).to have_css 'input[value="This is new issue"]'
     expect(page).to have_css 'textarea', text: 'Short text'
     expect(page).to have_css 'input[value="100"]'
+    expect(page).to have_css 'input[value="30"]'
+    expect(page).to have_css 'input[value="30"]'
     expect(page).to have_css 'input[value="30"]'
     expect(page).to have_css 'textarea', text: 'Long text'
   end
