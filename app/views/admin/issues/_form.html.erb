@@ -1,6 +1,6 @@
-<%= form_for @issue, url: url do |form| %>
+<%= form_for @issue, url: url, role: 'form' do |form| %>
   <% if @issue.errors.any? %>
-    <div class="alert alert-error alert-block">
+    <div class="alert alert-danger alert-block">
       Some errors occured:
       <ul>
         <% @issue.errors.full_messages.each do |error| %>
@@ -10,20 +10,32 @@
     </div>
   <% end %>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
 
-  <%= form.label :short_description %>
-  <%= form.text_area :short_description %>
+  <div class="form-group">
+    <%= form.label :short_description %>
+    <%= form.text_area :short_description, class: 'form-control', rows: 2  %>
+  </div>
 
-  <%= form.label :SMT_limit, 'SMT limit' %>
-  <%= form.text_field :SMT_limit %>
+  <div class="row">
+  <div class="form-group col-sm-6">
+    <%= form.label :SMT_limit, 'SMT limit' %>
+    <%= form.text_field :SMT_limit, class: 'form-control' %>
+  </div>
 
-  <%= form.label :solvers_limit %>
-  <%= form.text_field :solvers_limit %>
+  <div class="form-group col-sm-6">
+    <%= form.label :solvers_limit %>
+    <%= form.text_field :solvers_limit, class: 'form-control'  %>
+  </div>
+</div>
 
-  <%= form.label :long_description %>
-  <%= form.text_area :long_description %>
+  <div class="form-group">
+    <%= form.label :long_description %>
+    <%= form.text_area :long_description, class: 'form-control', rows: 10  %>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit class: 'btn btn-primary' %>
 <% end %>

@@ -24,6 +24,6 @@ feature 'Manage issues' do
     visit new_admin_issue_path
     click_button 'Create Issue'
 
-    expect(page).to have_css 'div.alert-error'
+    expect(page).to have_css 'div.alert-danger'
   end
 end
