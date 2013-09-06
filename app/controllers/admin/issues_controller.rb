@@ -6,7 +6,7 @@ class Admin::IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     if @issue.save
-      flash[:notice] = 'Issue has been created.'
+      flash[:success] = 'Issue has been created.'
       redirect_to edit_admin_issue_url @issue
     else
       render :new
