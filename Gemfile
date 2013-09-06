@@ -11,4 +11,10 @@ gem 'jbuilder', '~> 1.2'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'spork'
+end
+
+group :test do
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end

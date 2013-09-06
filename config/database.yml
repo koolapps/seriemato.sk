@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: seriemato_development
   pool: 5
-  username: seriemato
+  username: head
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,13 +48,5 @@ test:
   encoding: unicode
   database: seriemato_test
   pool: 5
-  username: seriemato
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: seriemato_production
-  pool: 5
-  username: seriemato
+  username: head
   password:
