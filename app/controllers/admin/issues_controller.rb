@@ -44,6 +44,8 @@ class Admin::IssuesController < ApplicationController
              :short_description,
              :long_description,
              :smt_limit,
-             :solvers_limit)
+             :solvers_limit,
+             :fake_smts,
+             :fake_solvers)
   end
 end

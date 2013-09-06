@@ -51,12 +51,12 @@ feature 'Manage issues' do
   end
 
   def validate_form
-    expect(page).to have_css 'input[value="This is new issue"]'
-    expect(page).to have_css 'textarea', text: 'Short text'
-    expect(page).to have_css 'input[value="100"]'
-    expect(page).to have_css 'input[value="30"]'
-    expect(page).to have_css 'input[value="30"]'
-    expect(page).to have_css 'input[value="30"]'
+    expect(page).to have_css 'input#issue_name[value="This is new issue"]'
+    expect(page).to have_css 'textarea#issue_short_description', text: 'Short text'
+    expect(page).to have_css 'input#issue_smt_limit[value="100"]'
+    expect(page).to have_css 'input#issue_solvers_limit[value="30"]'
+    expect(page).to have_css 'input#issue_fake_smts[value="10"]'
+    expect(page).to have_css 'input#issue_fake_solvers[value="15"]'
     expect(page).to have_css 'textarea', text: 'Long text'
   end
 end
