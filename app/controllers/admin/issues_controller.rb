@@ -22,8 +22,8 @@ class Admin::IssuesController < ApplicationController
   end
 
   def update
-    @issue = Issue.new(issue_params)
-    if @issue.save
+    @issue = Issue.find(params[:id])
+    if @issue.update(issue_params)
       flash[:success] = 'Issue has been updated.'
       redirect_to_edit_page
     else

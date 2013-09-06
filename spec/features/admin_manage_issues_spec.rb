@@ -34,6 +34,12 @@ feature 'Manage issues' do
     validate_form
   end
 
+  scenario "editing existing issue doesn't create new issue" do
+    issue = FactoryGirl.create(:issue)
+    visit edit_admin_issue_path issue
+    expect { click_button 'Update Issue' }.not_to change(Issue, :count)
+  end
+
   def fill_form_with_values
     fill_in 'Name', with: 'This is new issue'
     fill_in 'Short description', with: 'Short text'
