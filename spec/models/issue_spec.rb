@@ -21,4 +21,11 @@ describe Issue do
     issue = FactoryGirl.build(:issue)
     expect(issue).to be_valid
   end
+
+  describe '#random_issues' do
+    it 'returns eight random issues' do
+      10.times { FactoryGirl.create(:issue) }
+      expect(Issue.randoms.size).to be 8
+    end
+  end
 end

@@ -1,0 +1,12 @@
+<%= div_for issue, class: 'col-md-3' do %>
+  <div class="thumbnail">
+    <img src="holder.js?150x120" />
+    <div class="caption">
+      <h3><%= issue.name %></h3>
+      <p><%= issue.short_description %>
+    </div>
+  </div>
+<% end %>
+<% if (issue_counter+1) % 4 == 0 %>
+  </div><div class="row">
+<% end %>

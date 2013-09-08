@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Issue.destroy_all
+
+20.times do
+  Issue.create(
+    name: Faker::Lorem.sentence,
+    short_description: Faker::Lorem.paragraph,
+    long_description: Faker::Lorem.paragraphs.join("\n"),
+    smt_limit: rand(50) + 10,
+    solvers_limit: rand(20) + 10,
+    fake_smts: rand(10),
+    fake_solvers: rand(10)
+  )
+end
