@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seriemato</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div class="container">
+      <% [:success, :danger].each do |key| %>
+        <% if flash[key] %>
+          <div class="alert alert-<%= key %>"><%= flash[key] %></div>
+        <% end %>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

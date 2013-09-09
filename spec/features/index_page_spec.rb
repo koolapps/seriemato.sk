@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 feature 'Index page' do
+  scenario 'has all needed elements' do
+    visit root_path
+    within 'nav.navbar' do
+      expect(page).to have_link '', root_path
+      expect(page).to have_link 'Čo je seriemato?', href: page_path('about')
+      expect(page).to have_link 'Prezerať problémy'
+      expect(page).to have_link 'Pridať problém'
+    end
+  end
+
   scenario 'is showing 8 random issues' do
     10.times { FactoryGirl.create(:issue) }
     visit root_path
