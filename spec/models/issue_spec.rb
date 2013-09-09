@@ -8,6 +8,7 @@ describe Issue do
   it { should validate_presence_of(:solvers_limit) }
   it { should validate_numericality_of(:smt_limit) }
   it { should validate_numericality_of(:solvers_limit) }
+  it { should belong_to :category }
 
   it 'should respond to :fake_smts' do
     expect(Issue.new).to respond_to(:fake_smts)

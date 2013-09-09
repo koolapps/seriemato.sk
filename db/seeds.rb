@@ -6,7 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Category.destroy_all
 Issue.destroy_all
+
+5.times do
+  Category.create(
+    name: Faker::Lorem.word
+  )
+end
 
 20.times do
   Issue.create(

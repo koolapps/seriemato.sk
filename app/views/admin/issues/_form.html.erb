@@ -21,26 +21,31 @@
   </div>
 
   <div class="row">
-  <div class="form-group col-sm-3">
-    <%= form.label :smt_limit, 'SMT limit' %>
-    <%= form.text_field :smt_limit, class: 'form-control' %>
+    <div class="form-group col-sm-3">
+      <%= form.label :smt_limit, 'SMT limit' %>
+      <%= form.text_field :smt_limit, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= form.label :solvers_limit %>
+      <%= form.text_field :solvers_limit, class: 'form-control'  %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= form.label :fake_smts, 'Fake SMTs' %>
+      <%= form.text_field :fake_smts, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= form.label :fake_solvers %>
+      <%= form.text_field :fake_solvers, class: 'form-control'  %>
+    </div>
   </div>
 
-  <div class="form-group col-sm-3">
-    <%= form.label :solvers_limit %>
-    <%= form.text_field :solvers_limit, class: 'form-control'  %>
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: '-- Select Category --' }, { class: 'form-control' } %>
   </div>
-
-  <div class="form-group col-sm-3">
-    <%= form.label :fake_smts, 'Fake SMTs' %>
-    <%= form.text_field :fake_smts, class: 'form-control' %>
-  </div>
-
-  <div class="form-group col-sm-3">
-    <%= form.label :fake_solvers%>
-    <%= form.text_field :fake_solvers, class: 'form-control'  %>
-  </div>
-</div>
 
   <div class="form-group">
     <%= form.label :long_description %>

@@ -40,6 +40,17 @@ feature 'Manage issues' do
     expect { click_button 'Update Issue' }.not_to change(Issue, :count)
   end
 
+  scenario 'selecting category for the issue' do
+    issue = FactoryGirl.create(:issue)
+    FactoryGirl.create(:category, name: 'Category 1')
+    FactoryGirl.create(:category, name: 'Category 2')
+    visit edit_admin_issue_path issue
+    expect(page).to have_select('Category', options: ['-- Select Category --', 'Category 1', 'Category 2'])
+    select 'Category 2', from: 'Category'
+    click_button 'Update Issue'
+    expect(page).to have_select('Category', selected: 'Category 2')
+  end
+
   def fill_form_with_values
     fill_in 'Name', with: 'This is new issue'
     fill_in 'Short description', with: 'Short text'

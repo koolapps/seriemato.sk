@@ -8,4 +8,8 @@ FactoryGirl.define do
     smt_limit 1
     solvers_limit 2
   end
+
+  factory :category do
+    name 'Category'
+  end
 end
