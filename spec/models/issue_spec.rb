@@ -29,4 +29,21 @@ describe Issue do
       expect(Issue.randoms.size).to be 8
     end
   end
+
+  describe '#related_issues' do
+    it 'returns other issues from same category' do
+      category = FactoryGirl.create(:category)
+      issue = FactoryGirl.create(:issue, category: category)
+      other_issue = FactoryGirl.create(:issue, category: category)
+      expect(issue.related_issues.to_a).to eq [other_issue]
+    end
+
+    it 'does not return issues from other categories' do
+      category = FactoryGirl.create(:category)
+      issue = FactoryGirl.create(:issue, category: category)
+      other_category = FactoryGirl.create(:category)
+      non_related_issue = FactoryGirl.create(:issue, category: other_category)
+      expect(issue.related_issues).not_to include(non_related_issue)
+    end
+  end
 end

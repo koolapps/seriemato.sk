@@ -9,8 +9,10 @@
 Category.destroy_all
 Issue.destroy_all
 
+categories = []
+
 5.times do
-  Category.create(
+  categories << Category.create(
     name: Faker::Lorem.word
   )
 end
@@ -23,6 +25,7 @@ end
     smt_limit: rand(50) + 10,
     solvers_limit: rand(20) + 10,
     fake_smts: rand(10),
-    fake_solvers: rand(10)
+    fake_solvers: rand(10),
+    category: categories.sample
   )
 end

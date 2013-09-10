@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h1><%= @issue.name %></h1>
+
+    <%= @issue.long_description %>
+  </div>
+  <div class="col-sm-4">
+    <div class="related-issues">
+      <h3>Súvisiace problémy</h3>
+      <ul class="list-unstyled">
+        <%= render partial: 'related_issue', collection: @issue.related_issues %>
+      </ul>
+    </div>
+  </div>
+</div>

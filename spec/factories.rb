@@ -2,7 +2,9 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :issue do
-    name "Issue"
+    sequence :name do |n| 
+      "Issue ##{n}"
+    end
     short_description "issue"
     long_description "issue issue"
     smt_limit 1
