@@ -24,9 +24,11 @@ feature 'Index page' do
   scenario 'has all needed elements for random issue' do
     issue = FactoryGirl.create(:issue, name: 'My Issue', short_description: 'This is my issue')
     visit root_path
-    expect(page).to have_css "div#issue_#{issue.id}"
-    expect(page).to have_css 'h3', text: 'My Issue'
-    expect(page).to have_css 'p', text: 'This is my issue'
-    expect(page).to have_css "div#issue_#{issue.id} img"
+    within "div#issue_#{issue.id}" do
+      expect(page).to have_css 'h3', text: 'My Issue'
+      expect(page).to have_css 'p', text: 'This is my issue'
+      expect(page).to have_css 'img'
+      expect(page).to have_link issue.name, href: issue_path(issue)
+    end
   end
 end
