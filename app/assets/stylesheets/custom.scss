@@ -13,6 +13,12 @@ body {
   padding-bottom: 27px;
 }
 
+div.explanation {
+  margin-bottom: 20px;
+  img {
+    max-width: 100%;
+  }
+}
 .random-issues .row {
   margin-bottom: 20px;
 }

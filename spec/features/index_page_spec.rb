@@ -9,6 +9,10 @@ feature 'Index page' do
       expect(page).to have_link 'Prezerať problémy'
       expect(page).to have_link 'Pridať problém'
     end
+    within 'div.explanation' do
+      expect(page).to have_link 'bližšie vysvetlenie', href: page_path('about')
+      expect(page).to have_css 'img[src*="explanation.png"]'
+    end
   end
 
   scenario 'is showing 8 random issues' do

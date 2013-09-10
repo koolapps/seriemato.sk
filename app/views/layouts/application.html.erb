@@ -27,6 +27,12 @@
         </ul>
       </div>
       </nav>
+
+      <div class="explanation text-center">
+        <%= image_tag 'explanation.png' %>
+        <%= link_to 'bližšie vysvetlenie', page_path('about'), class: 'btn btn-primary btn-lg' %>
+      </div>
+
       <% [:success, :danger].each do |key| %>
         <% if flash[key] %>
           <div class="alert alert-<%= key %>"><%= flash[key] %></div>
