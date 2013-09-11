@@ -1,4 +1,4 @@
-class Admin::IssuesController < ApplicationController
+class Admin::IssuesController < AdminController
   def index
     @issues = Issue.all
   end
