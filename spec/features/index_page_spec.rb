@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Index page' do
-  scenario 'has all needed elements' do
+  scenario 'has navbar' do
     visit root_path
     within 'nav.navbar' do
       expect(page).to have_link '', root_path
@@ -9,6 +9,10 @@ feature 'Index page' do
       expect(page).to have_link 'Prezerať problémy'
       expect(page).to have_link 'Pridať problém'
     end
+  end
+
+  scenario 'has explanation picture' do
+    visit root_path
     within 'div.explanation' do
       expect(page).to have_link 'bližšie vysvetlenie', href: page_path('about')
       expect(page).to have_css 'img[src*="explanation.png"]'
@@ -29,6 +33,16 @@ feature 'Index page' do
       expect(page).to have_css 'p', text: 'This is my issue'
       expect(page).to have_css 'img'
       expect(page).to have_link issue.name, href: issue_path(issue)
+    end
+  end
+
+  scenario 'has category list in footer' do
+    3.times { FactoryGirl.create(:category) }
+    visit root_path
+    within 'div.footer' do
+      Category.all.each do |category|
+        expect(page).to have_link category.name, category_path(category)
+      end
     end
   end
 end

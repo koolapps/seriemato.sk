@@ -4,4 +4,5 @@ Seriemato::Application.routes.draw do
     resources :issues, only: [:new, :create, :edit, :index, :update]
   end
   resources :issues, only: [:show]
+  resources :category, only: [:show]
 end

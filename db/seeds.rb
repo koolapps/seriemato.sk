@@ -11,7 +11,7 @@ Issue.destroy_all
 
 categories = []
 
-5.times do
+10.times do
   categories << Category.create(
     name: Faker::Lorem.word
   )
