@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :set_categories
+  before_filter :set_footer_categories
 
-  def set_categories
-    @categories = Category.all
+  def set_footer_categories
+    @footer_categories = Category.all
   end
 end

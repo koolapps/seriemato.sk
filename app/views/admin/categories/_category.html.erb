@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <%= link_to category.name, edit_admin_category_path(category) %>
+  </td>
+  <td class="text-right">
+    <%= link_to 'Delete', admin_category_path(category), method: 'delete', data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

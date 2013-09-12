@@ -14,13 +14,14 @@ gem 'high_voltage'
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'spork'
   gem 'factory_girl_rails'
 end
 
 group :development do
   gem 'faker'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'debugger'
 end
 

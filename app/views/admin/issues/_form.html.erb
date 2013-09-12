@@ -1,14 +1,5 @@
 <%= form_for [:admin, @issue] do |form| %>
-  <% if @issue.errors.any? %>
-    <div class="alert alert-danger alert-block">
-      Some errors occured:
-      <ul>
-        <% @issue.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/form_errors', object: form.object %>
 
   <div class="form-group">
     <%= form.label :name %>
