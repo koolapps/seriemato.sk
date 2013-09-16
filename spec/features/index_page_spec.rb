@@ -26,7 +26,7 @@ feature 'Index page' do
   end
 
   scenario 'has all needed elements for random issue' do
-    issue = FactoryGirl.create(:issue, name: 'My Issue', short_description: 'This is my issue')
+    issue = FactoryGirl.create(:issue, name: 'My Issue', short_description: 'This is my issue', picture: picture_file('large_picture.jpg'))
     visit root_path
     within "div#issue_#{issue.id}" do
       expect(page).to have_css 'h3', text: 'My Issue'

@@ -9,7 +9,9 @@ FactoryGirl.define do
     long_description "issue issue"
     smt_limit 1
     solvers_limit 2
-    picture { File.new(Rails.root.join('spec', 'test_pictures', 'large_picture.jpg')) }
+    factory :issue_with_picture do
+      picture { picture_file }
+    end
   end
 
   factory :category do

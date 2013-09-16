@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Issue page' do
   scenario 'has all needed elements' do
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:issue, picture: picture_file('large_picture.jpg'))
     visit issue_path(issue)
     expect(page).to have_css 'h1', text: issue.name
     expect(page).to have_content issue.long_description
