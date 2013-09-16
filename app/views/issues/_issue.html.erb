@@ -1,6 +1,10 @@
 <%= div_for issue, class: 'col-sm-3' do %>
   <div class="thumbnail">
-    <img src="holder.js?150x120" />
+    <% if issue.picture.present? %>
+      <%= image_tag issue.picture.url(:small) %>
+    <% else %>
+      <img src="holder.js?144x54" />
+    <% end %>
     <div class="caption">
       <h3><%= link_to issue.name, issue_path(issue) %></h3>
       <p><%= issue.short_description %>

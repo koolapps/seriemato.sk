@@ -12,8 +12,8 @@ describe Issue do
   it { should have_attached_file(:picture) }
 
   it 'has correct picture styles' do
-    expect(Issue.attachment_definitions[:picture][:styles][:small]).to eq '144x54>'
-    expect(Issue.attachment_definitions[:picture][:styles][:large]).to eq '640x240>'
+    expect(Issue.attachment_definitions[:picture][:styles][:small]).to eq '144x54#'
+    expect(Issue.attachment_definitions[:picture][:styles][:large]).to eq '640x240#'
   end
 
   it 'should respond to :fake_smts' do

@@ -3,8 +3,8 @@ class Issue < ActiveRecord::Base
 
   has_attached_file :picture,
                     styles: {
-                      small: '144x54>',
-                      large: '640x240>'
+                      small: '144x54#',
+                      large: '640x240#'
                     }
 
   validates :name, :short_description, :long_description, :smt_limit, :solvers_limit, presence: true

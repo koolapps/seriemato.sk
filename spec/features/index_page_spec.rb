@@ -31,7 +31,7 @@ feature 'Index page' do
     within "div#issue_#{issue.id}" do
       expect(page).to have_css 'h3', text: 'My Issue'
       expect(page).to have_css 'p', text: 'This is my issue'
-      expect(page).to have_css 'img'
+      expect(page).to have_css 'img[src*="large_picture.jpg"]'
       expect(page).to have_link issue.name, href: issue_path(issue)
     end
   end

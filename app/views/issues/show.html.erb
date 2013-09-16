@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-8 issue-details">
     <h1><%= @issue.name %></h1>
-    <div class="picture">
+    <div class="picture text-center">
       <% if @issue.picture.url.present? %>
         <%= image_tag @issue.picture.url(:large) %>
       <% end %>
