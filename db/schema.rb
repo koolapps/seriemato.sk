@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912093324) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130916090258) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -31,6 +28,10 @@ ActiveRecord::Schema.define(version: 20130912093324) do
     t.string   "fake_smts"
     t.string   "fake_solvers"
     t.integer  "category_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "issues", ["category_id"], name: "index_issues_on_category_id", using: :btree

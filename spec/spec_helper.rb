@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'spork'
 require 'capybara-webkit'
+require 'paperclip/matchers'
 
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -104,4 +105,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   Capybara.javascript_driver = :webkit
+  config.include Paperclip::Shoulda::Matchers
 end

@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => 'master'
 gem 'high_voltage'
+gem 'paperclip'
 
 group :test, :development do
   gem 'rspec-rails'

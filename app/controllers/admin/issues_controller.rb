@@ -13,6 +13,7 @@ class Admin::IssuesController < AdminController
       flash[:success] = 'Issue has been created.'
       redirect_to_edit_page
     else
+      reset_picture
       render :new
     end
   end
@@ -27,6 +28,7 @@ class Admin::IssuesController < AdminController
       flash[:success] = 'Issue has been updated.'
       redirect_to_edit_page
     else
+      reset_picture
       render :edit
     end
   end
@@ -35,6 +37,10 @@ class Admin::IssuesController < AdminController
 
   def redirect_to_edit_page
     redirect_to edit_admin_issue_url @issue
+  end
+
+  def reset_picture
+    @issue.picture = nil
   end
 
   def issue_params
@@ -47,7 +53,8 @@ class Admin::IssuesController < AdminController
              :solvers_limit,
              :fake_smts,
              :fake_solvers,
-             :category_id
+             :category_id,
+             :picture
             )
   end
 end
