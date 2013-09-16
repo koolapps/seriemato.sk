@@ -19,7 +19,7 @@ feature 'Manage issues' do
 
   scenario 'adding picture to issue with invalid information' do
     visit new_admin_issue_path
-    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/big-picture.jpg'
+    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/large_picture.jpg'
     click_button 'Create Issue'
     expect(page).not_to have_css 'div.picture img'
   end
@@ -51,7 +51,7 @@ feature 'Manage issues' do
     issue = FactoryGirl.create(:issue)
     visit edit_admin_issue_path issue
     fill_in 'Name', with: nil
-    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/big-picture.jpg'
+    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/large_picture.jpg'
     click_button 'Update Issue'
     expect(page).not_to have_css 'div.picture img'
   end
@@ -75,7 +75,7 @@ feature 'Manage issues' do
     fill_in 'Long description', with: 'Long text'
     fill_in 'Fake SMTs', with: 10
     fill_in 'Fake solvers', with: 15
-    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/big-picture.jpg'
+    attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/large_picture.jpg'
   end
 
   def validate_form
@@ -86,6 +86,6 @@ feature 'Manage issues' do
     expect(page).to have_css 'input#issue_fake_smts[value="10"]'
     expect(page).to have_css 'input#issue_fake_solvers[value="15"]'
     expect(page).to have_css 'textarea', text: 'Long text'
-    expect(page).to have_css 'img[src*="big-picture.jpg"]'
+    expect(page).to have_css 'img[src*="large_picture.jpg"]'
   end
 end

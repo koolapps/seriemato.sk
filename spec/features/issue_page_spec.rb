@@ -6,9 +6,10 @@ feature 'Issue page' do
     visit issue_path(issue)
     expect(page).to have_css 'h1', text: issue.name
     expect(page).to have_content issue.long_description
+    expect(page).to have_css 'img[src*="large_picture.jpg"]'
   end
 
-  scenario 'list related issue' do
+  scenario 'list related issues' do
     category = FactoryGirl.create(:category)
     issue = FactoryGirl.create(:issue, category: category)
     other_issue = FactoryGirl.create(:issue, category: category)
