@@ -5,7 +5,8 @@ class Issue < ActiveRecord::Base
                     styles: {
                       small: '144x54#',
                       large: '640x240#'
-                    }
+                    },
+                    default_url: '/images/missing.png'
 
   validates :name, :short_description, :long_description, :smt_limit, :solvers_limit, presence: true
   validates :smt_limit, :solvers_limit, numericality: { only_integer: true }

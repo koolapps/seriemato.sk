@@ -19,12 +19,18 @@ div.explanation {
     max-width: 100%;
   }
 }
-.random-issues .row {
-  margin-bottom: 20px;
-}
 
-.random-issues .thumbnail {
-  border: none;
+.random-issues {
+  .row {
+    margin-bottom: 20px;
+  }
+  .thumbnail {
+    border: none;
+  }
+  img {
+    max-width: 144px;
+    max-height: 44px;
+  }
 }
 
 div.footer {
