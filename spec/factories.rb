@@ -19,4 +19,8 @@ FactoryGirl.define do
       "Category #{n}"
     end
   end
+
+  factory :smt do
+    issue nil
+  end
 end

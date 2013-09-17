@@ -9,6 +9,7 @@ describe Issue do
   it { should validate_numericality_of(:smt_limit) }
   it { should validate_numericality_of(:solvers_limit) }
   it { should belong_to :category }
+  it { should have_many :smts }
   it { should have_attached_file(:picture) }
 
   it 'has correct picture styles' do
@@ -50,6 +51,20 @@ describe Issue do
       other_category = FactoryGirl.create(:category)
       non_related_issue = FactoryGirl.create(:issue, category: other_category)
       expect(issue.related_issues).not_to include(non_related_issue)
+    end
+  end
+
+  describe '#smt_count' do
+    it 'returns number of SMTs' do
+      issue = FactoryGirl.create(:issue)
+      FactoryGirl.create(:smt, issue: issue)
+      expect(issue.smt_count).to eq 1
+    end
+
+    it 'adds fake SMTs to total SMT count' do
+      issue = FactoryGirl.create(:issue, fake_smts: 10)
+      FactoryGirl.create(:smt, issue: issue)
+      expect(issue.smt_count).to eq 11
     end
   end
 end

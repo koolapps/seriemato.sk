@@ -1,5 +1,6 @@
 class Issue < ActiveRecord::Base
   belongs_to :category
+  has_many :smts, dependent: :destroy
 
   has_attached_file :picture,
                     styles: {
@@ -15,5 +16,13 @@ class Issue < ActiveRecord::Base
 
   def related_issues
     Issue.where("category_id = ? AND id != ?", self.category_id, self.id)
+  end
+
+  def smt_count
+    if fake_smts
+      smts.count + fake_smts
+    else
+      smts.count
+    end
   end
 end
