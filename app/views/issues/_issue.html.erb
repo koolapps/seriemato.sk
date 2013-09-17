@@ -1,5 +1,5 @@
 <%= div_for issue, class: 'col-sm-3' do %>
-  <div class="thumbnail">
+  <div class="thumbnail text-center">
     <% if issue.picture.present? %>
       <%= link_to image_tag(issue.picture.url(:small)), issue_path(issue) %>
     <% else %>
