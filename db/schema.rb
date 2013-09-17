@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917113553) do
+ActiveRecord::Schema.define(version: 20130917190329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20130917113553) do
     t.string   "name"
     t.text     "short_description"
     t.text     "long_description"
-    t.string   "smt_limit"
-    t.string   "solvers_limit"
+    t.integer  "smt_limit"
+    t.integer  "solvers_limit"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "fake_smts"
-    t.string   "fake_solvers"
+    t.integer  "fake_smts"
+    t.integer  "fake_solvers"
     t.integer  "category_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
