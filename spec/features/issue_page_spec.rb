@@ -19,4 +19,16 @@ feature 'Issue page' do
       expect(page).to have_link other_issue.name, href: issue_path(other_issue)
     end
   end
+
+  scenario 'click on SMT button increase SMT count', js: true do
+    issue = FactoryGirl.create(:issue)
+    visit issue_path(issue)
+    expect(page).to have_css '.smt-count', text: '0'
+    click_button 'Serie ma to!'
+    expect(page).to have_css '.smt-count', text: '1'
+  end
+
+  scenario 'click on SMT button shows user data form'
+
+  scenario 'click on SMT button increase SMT count just once for each user'
 end

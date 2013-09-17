@@ -4,7 +4,9 @@ Seriemato::Application.routes.draw do
     resources :issues, only: [:new, :create, :edit, :index, :update]
     resources :categories, only: [:new, :create, :edit, :update, :index, :destroy]
   end
-  resources :issues, only: [:show]
+  resources :issues, only: [:show] do
+    resources :smts, only: [:create]
+  end
   resources :category, only: [:show]
   get '/admin', to: 'admin/issues#index'
 end

@@ -9,6 +9,12 @@
     <%= @issue.long_description %>
   </div>
   <div class="col-sm-4">
+    <div>
+      <div class="smt-count">
+        <%= @issue.smt_count %>
+      </div>
+      <%= button_to 'Serie ma to!', [@issue, :smts], remote: true %>
+    </div>
     <div class="related-issues">
       <h3>Súvisiace problémy</h3>
       <ul class="list-unstyled">
