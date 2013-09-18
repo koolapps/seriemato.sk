@@ -37,9 +37,21 @@ feature 'Index page' do
   end
 
   scenario 'has category list in footer' do
-    3.times { FactoryGirl.create(:category) }
+    2.times { FactoryGirl.create(:category) }
     visit root_path
     within 'div.footer' do
+      Category.all.each do |category|
+        expect(page).to have_link category.name, category_path(category)
+      end
+    end
+  end
+
+  scenario 'has category list in in sidebar' do
+    2.times { FactoryGirl.create(:category) }
+    visit root_path
+    within 'div.categories-sidebar' do
+      expect(page).to have_css 'h3', text: 'Oblasti problémov'
+      expect(page).to have_link 'Všetko', issues_path
       Category.all.each do |category|
         expect(page).to have_link category.name, category_path(category)
       end

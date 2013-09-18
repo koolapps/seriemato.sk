@@ -1,5 +1,5 @@
 class IndexPagesController < ApplicationController
   def index
-    @random_issues = Issue.randoms
+    @index_page = IndexPage.new
   end
 end
