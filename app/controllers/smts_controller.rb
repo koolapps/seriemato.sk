@@ -6,4 +6,11 @@ class SmtsController < ApplicationController
       format.js
     end
   end
+
+  def update
+    @smt = Smt.find(params[:id])
+    @smt.update(params.require(:smt).permit([:sex, :year_of_birth, :city, :job]))
+    flash[:success] = 'Ďakujeme! Údaje boli uložené.'
+    redirect_to issue_path @smt.issue
+  end
 end

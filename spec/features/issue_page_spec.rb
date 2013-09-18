@@ -28,7 +28,20 @@ feature 'Issue page' do
     expect(page).to have_css '.smt-count', text: '1'
   end
 
-  scenario 'click on SMT button shows user data form'
+  scenario 'click on SMT button shows user data form', js: true do
+    issue = FactoryGirl.create(:issue)
+    visit issue_path(issue)
+    click_button 'Serie ma to!'
+    expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
+    choose 'Žena'
+    choose 'Muž'
+    select '1990', from: 'Rok narodenia'
+    select 'Košice I', from: 'Okres'
+    select 'Služby', from: 'Zamestnanie'
+    fill_in 'Email', with: 'user@example.com'
+    click_button 'Uložiť údaje'
+    expect(page).to have_content 'Ďakujeme! Údaje boli uložené.'
+  end
 
   scenario 'click on SMT button increase SMT count just once for each user'
 end

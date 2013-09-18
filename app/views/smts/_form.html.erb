@@ -1,0 +1,50 @@
+<%= form_for @smt do |form| %>
+  <div class="modal-body">
+    <p class="alert alert-success">
+    Ďakujeme za hlasovanie!
+    </p>
+    <p>
+    Prosím vyplňte nasledujúce anonymné údaje, ktoré nám pomôžu získať prehľad o tom koho trápia aké problémy.
+    </p>
+    <div class="radio-inline">
+      <label>
+        <%= form.radio_button :sex, 'Muž' %>
+        Muž
+      </label>
+    </div>
+
+    <div class="radio-inline">
+      <label>
+        <%= form.radio_button :sex, 'Žena' %>
+        Žena
+      </label>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :year_of_birth, 'Rok narodenia' %>
+      <%= form.select :year_of_birth, ApplicationHelper::years_of_birth, { include_blank: true }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :city, 'Okres' %>
+      <%= form.select :city, ApplicationHelper::CITIES, { include_blank: true }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :job, 'Zamestnanie' %>
+      <%= form.select :job, ApplicationHelper::JOBS, { include_blank: true }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: 'form-control' %>
+      <p class="help-block">
+      Ak chcete dostávať informácie o stave tohto problému, tak zadajte aj Váš email.
+      </p>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <%= form.submit 'Uložiť údaje', class: 'btn btn-primary' %>
+  </div>
+<% end %>

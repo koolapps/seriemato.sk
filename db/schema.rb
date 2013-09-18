@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917190329) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130917193016) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -43,6 +40,11 @@ ActiveRecord::Schema.define(version: 20130917190329) do
     t.integer  "issue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sex"
+    t.string   "year_of_birth"
+    t.string   "city"
+    t.string   "job"
+    t.string   "email"
   end
 
   add_index "smts", ["issue_id"], name: "index_smts_on_issue_id", using: :btree
