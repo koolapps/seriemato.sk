@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917193016) do
+ActiveRecord::Schema.define(version: 20130919122546) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -21,17 +21,18 @@ ActiveRecord::Schema.define(version: 20130917193016) do
     t.string   "name"
     t.text     "short_description"
     t.text     "long_description"
-    t.integer  "smt_limit"
-    t.integer  "solvers_limit"
+    t.integer  "smt_limit",            default: 0
+    t.integer  "solvers_limit",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "fake_smts"
-    t.integer  "fake_solvers"
+    t.integer  "fake_smts",            default: 0
+    t.integer  "fake_solvers",         default: 0
     t.integer  "category_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "smts_count",           default: 0
   end
 
   add_index "issues", ["category_id"], name: "index_issues_on_category_id", using: :btree

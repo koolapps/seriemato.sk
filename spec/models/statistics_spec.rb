@@ -12,7 +12,7 @@ describe Statistics do
 
   describe '#total_smts' do
     it 'returns count of all SMTs' do
-      FactoryGirl.create(:issue_with_smts, smts_count: 3)
+      FactoryGirl.create(:issue_with_smts, smts_count: 1, fake_smts: 2)
       expect(statistics.total_smts).to be 3
     end
   end
@@ -35,8 +35,8 @@ describe Statistics do
 
   describe '#top_issue_by_smts' do
     it 'returns issue with the highest SMTs count' do
-      FactoryGirl.create(:issue_with_smts, smts_count: 1)
-      top = FactoryGirl.create(:issue_with_smts, smts_count: 2)
+      FactoryGirl.create(:issue_with_smts, smts_count: 1, fake_smts: 1)
+      top = FactoryGirl.create(:issue_with_smts, smts_count: 1, fake_smts: 2)
       expect(statistics.top_issue_by_smts).to eq top
     end
   end
@@ -52,8 +52,8 @@ describe Statistics do
 
   describe '#lowest_issue_by_smts' do
     it 'returns oldest issue with smallest SMTs count' do
-      FactoryGirl.create(:issue_with_smts, smts_count: 2, created_at: 2.days.ago)
-      lowest = FactoryGirl.create(:issue_with_smts, smts_count: 2, created_at: 3.days.ago)
+      FactoryGirl.create(:issue, fake_smts: 1, created_at: 2.days.ago)
+      lowest = FactoryGirl.create(:issue_with_smts, smts_count: 1, created_at: 3.days.ago)
       expect(statistics.lowest_issue_by_smts).to eq lowest
     end
   end

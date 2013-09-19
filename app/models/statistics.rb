@@ -4,7 +4,7 @@ class Statistics
   end
 
   def total_smts
-    Smt.count
+    Issue.sum(:smts_count)
   end
 
   def latest_issue
@@ -20,7 +20,7 @@ class Statistics
   end
 
   def last_week_top_issue_by_smts
-    issues_by_smts.where('smts.created_at > ?', 7.days.ago).limit(1).first
+    Issue.joins(:smts).select('issues.*, count(smts.id) as count').where('smts.created_at > ?', 7.days.ago).group('issues.id').limit(1).first
   end
 
 
@@ -35,6 +35,6 @@ class Statistics
   private
 
   def issues_by_smts
-    Issue.joins(:smts).select('issues.*, count(smts.id) as smts_count').order('smts_count DESC').group('issues.id')
+    Issue.order('smts_count DESC')
   end
 end

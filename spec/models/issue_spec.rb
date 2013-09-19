@@ -30,6 +30,13 @@ describe Issue do
     expect(issue).to be_valid
   end
 
+  it 'updates smts_count with real + fake SMTs before save' do
+    issue = FactoryGirl.create(:issue_with_smts, smts_count: 1)
+    issue.fake_smts = 2
+    issue.save
+    expect(issue.smts_count).to be 3
+  end
+
   describe '#random_issues' do
     it 'returns eight random issues' do
       10.times { FactoryGirl.create(:issue) }
