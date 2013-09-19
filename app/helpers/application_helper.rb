@@ -12,4 +12,18 @@ Administratíva Automobilový\ priemysel Baníctvo,\ hutníctvo Bankovníctvo Be
     to = Time.now.year - 70
     (to..from).to_a.reverse
   end
+
+  def link_to_issue_if(issue, text)
+    link_to_object_if(issue, text, :issue_path)
+  end
+
+  def link_to_category_if(category, text)
+    link_to_object_if(category, text, :category_path)
+  end
+
+  def link_to_object_if(object, text, path_method)
+    if object
+      "#{text} #{link_to object.name, send(path_method, object)}".html_safe
+    end
+  end
 end

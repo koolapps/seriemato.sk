@@ -6,4 +6,8 @@ class IndexPage
   def categories
     Category.all
   end
+
+  def statistics
+    Statistics.new
+  end
 end

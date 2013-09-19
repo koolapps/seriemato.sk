@@ -57,4 +57,16 @@ feature 'Index page' do
       end
     end
   end
+
+  scenario 'has page statistics' do
+    category = FactoryGirl.create(:category)
+    issue = FactoryGirl.create(:issue_with_smts, smts_count: 1, category: category)
+    visit root_path
+    within 'div.statistics' do
+      expect(page).to have_css '.total-issues', text: 1
+      expect(page).to have_css '.total-smts', text: 1
+      expect(page).to have_link issue.name, issue_path(issue)
+      expect(page).to have_link category.name, category_path(category)
+    end
+  end
 end
