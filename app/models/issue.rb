@@ -4,8 +4,8 @@ class Issue < ActiveRecord::Base
 
   has_attached_file :picture,
                     styles: {
-                      small: '144x54#',
-                      large: '640x240#'
+                      small: '180x60#',
+                      large: '750x250#'
                     },
                     default_url: '/images/missing.png'
 
