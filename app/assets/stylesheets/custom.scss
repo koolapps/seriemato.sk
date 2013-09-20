@@ -4,6 +4,10 @@ body {
   padding: 20px 0 0 20px;
 }
 
+img {
+  max-width: 100%;
+}
+
 .navbar .navbar-brand {
   padding: 0 15px 5px 15px; 
 }
@@ -26,10 +30,6 @@ div.explanation {
   }
   .thumbnail {
     border: none;
-  }
-  img {
-    max-width: 144px;
-    max-height: 44px;
   }
 }
 
