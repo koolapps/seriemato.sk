@@ -38,13 +38,8 @@ feature 'Manage issues' do
     click_button 'Update Issue'
     expect(page).to have_content 'Issue has been updated.'
     expect(page).to have_css 'h1', text: 'Edit Issue'
-    validate_form
-  end
-
-  scenario "editing existing issue doesn't create new issue" do
-    issue = FactoryGirl.create(:issue)
     visit edit_admin_issue_path issue
-    expect { click_button 'Update Issue' }.not_to change(Issue, :count)
+    validate_form
   end
 
   scenario 'adding picture to existing issue with invalid information' do
