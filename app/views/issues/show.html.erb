@@ -13,7 +13,7 @@
       <div class="smt-count">
         <%= @issue.smt_count %>
       </div>
-      <%= button_to 'Serie ma to!', [@issue, :smts], remote: true, class: 'btn btn-danger' %>
+      <%= link_to 'Serie ma to!', new_issue_smt_path(@issue), remote: true, class: 'btn btn-danger' %>
     </div>
     <div class="related-issues">
       <h3>Súvisiace problémy</h3>

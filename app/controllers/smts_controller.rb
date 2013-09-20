@@ -1,16 +1,31 @@
 class SmtsController < ApplicationController
+  SAVE_DATA_AND_VOTE = 'Uložiť údaje a hlasovať'
+
+  def new
+    @smt = issue.smts.build
+  end
+
   def create
-    @smt = Issue.find(params[:issue_id]).smts.build
-    @smt.save
-    respond_to do |format|
-      format.js
+    @smt = issue.smts.build(smt_params)
+    if params[:commit] == SAVE_DATA_AND_VOTE
+      @smt.validate = true
+    end
+    if @smt.save
+      flash[:success] = 'Ďakujeme! Váš hlas bol započítaný.'
+    else
+      render 'new'
     end
   end
 
-  def update
-    @smt = Smt.find(params[:id])
-    @smt.update(params.require(:smt).permit([:sex, :year_of_birth, :city, :job]))
-    flash[:success] = 'Ďakujeme! Údaje boli uložené.'
-    redirect_to issue_path @smt.issue
+  private
+
+  def issue
+    Issue.find(params[:issue_id])
+  end
+
+  def smt_params
+    params.
+      require(:smt).
+      permit(:sex, :year_of_birth, :city, :job)
   end
 end

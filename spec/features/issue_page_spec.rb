@@ -20,18 +20,20 @@ feature 'Issue page' do
     end
   end
 
-  scenario 'click on SMT button increase SMT count', js: true do
+  scenario 'click on SMT button and vote for the problem', js: true do
     issue = FactoryGirl.create(:issue)
     visit issue_path(issue)
-    expect(page).to have_css '.smt-count', text: '0'
-    click_button 'Serie ma to!'
-    expect(page).to have_css '.smt-count', text: '1'
+    click_link 'Serie ma to!'
+    expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
+    click_button 'Hlasovať anonymne'
+    expect(page).to have_content 'Ďakujeme! Váš hlas bol započítaný.'
+    expect(page).to have_css '.smt-count', text: 1
   end
 
-  scenario 'click on SMT button shows user data form', js: true do
+  scenario 'click on SMT button and enter user data', js: true do
     issue = FactoryGirl.create(:issue)
     visit issue_path(issue)
-    click_button 'Serie ma to!'
+    click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
     choose 'Žena'
     choose 'Muž'
@@ -39,8 +41,24 @@ feature 'Issue page' do
     select 'Košice I', from: 'Okres'
     select 'Služby', from: 'Zamestnanie'
     fill_in 'Email', with: 'user@example.com'
-    click_button 'Uložiť údaje'
-    expect(page).to have_content 'Ďakujeme! Údaje boli uložené.'
+    click_button 'Uložiť údaje a hlasovať'
+    expect(page).to have_content 'Ďakujeme! Váš hlas bol započítaný.'
+    expect(page).to have_css '.smt-count', text: 1
+    smt = Smt.last
+    expect(smt.sex).to eq 'Muž'
+    expect(smt.year_of_birth).to eq '1990'
+    expect(smt.city).to eq 'Košice I'
+    expect(smt.job).to eq 'Služby'
+  end
+
+  scenario 'click on SMT buttong and send empty user data', js: true do
+    issue = FactoryGirl.create(:issue)
+    visit issue_path(issue)
+    click_link 'Serie ma to!'
+    expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
+    click_button 'Uložiť údaje a hlasovať'
+    expect(page).to have_css 'div.form-errors'
+    expect(page).to have_css '.smt-count', text: 0
   end
 
   scenario 'click on SMT button increase SMT count just once for each user'

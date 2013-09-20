@@ -1,3 +1,1 @@
-$('.smt-count').html('<%= @smt.issue.smt_count %>')
-$('body').append('<%=j render('modal') %>')
-$('#modal').modal()
+window.location.href = '<%= issue_url(@smt.issue) %>'

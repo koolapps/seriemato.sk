@@ -1,11 +1,15 @@
-<%= form_for @smt do |form| %>
+<%= form_for [@smt.issue, @smt], remote: true do |form| %>
   <div class="modal-body">
-    <p class="alert alert-success">
-    Ďakujeme za hlasovanie!
-    </p>
     <p>
     Prosím vyplňte nasledujúce anonymné údaje, ktoré nám pomôžu získať prehľad o tom koho trápia aké problémy.
     </p>
+
+    <% if @smt.errors.any? %>
+      <div class="alert alert-danger form-errors">
+        Prosím vyplňte chýbajúce údaje.
+      </div>
+    <% end %>
+
     <div class="radio-inline">
       <label>
         <%= form.radio_button :sex, 'Muž' %>
@@ -45,6 +49,7 @@
   </div>
 
   <div class="modal-footer">
-    <%= form.submit 'Uložiť údaje', class: 'btn btn-primary' %>
+    <%= form.submit 'Hlasovať anonymne', class: 'btn btn-default' %>
+    <%= form.submit SmtsController::SAVE_DATA_AND_VOTE, class: 'btn btn-primary' %>
   </div>
 <% end %>
