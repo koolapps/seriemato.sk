@@ -54,7 +54,6 @@ feature 'Issue page' do
 
   scenario 'click on SMT button and enter user data saves user data in cookies', js: true do
     issue = FactoryGirl.create(:issue)
-    another_issue = FactoryGirl.create(:issue)
     visit issue_path(issue)
     click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
@@ -66,7 +65,7 @@ feature 'Issue page' do
     fill_in 'Email', with: 'user@example.com'
     click_button 'Uložiť údaje a hlasovať'
     sleep 1
-    visit issue_path(another_issue)
+    visit issue_path(issue)
     click_link 'Serie ma to!'
     within '#modal' do
       expect(page).to have_css 'input[value="Muž"][checked="checked"]'
