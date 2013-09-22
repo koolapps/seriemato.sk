@@ -43,6 +43,7 @@ describe Statistics do
 
   describe '#last_week_top_issue_by_smts' do
     it 'returns issue with the highest SMTs count from last 7 days' do
+      FactoryGirl.create(:issue_with_smts, smts_count: 1)
       top = FactoryGirl.create(:issue_with_smts, smts_count: 2)
       old_top = FactoryGirl.create(:issue, created_at: 8.days.ago)
       3.times { FactoryGirl.create(:smt, created_at: 8.days.ago, issue: old_top) }

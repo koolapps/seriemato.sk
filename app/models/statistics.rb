@@ -20,7 +20,7 @@ class Statistics
   end
 
   def last_week_top_issue_by_smts
-    Issue.joins(:smts).select('issues.*, count(smts.id) as count').where('smts.created_at > ?', 7.days.ago).group('issues.id').limit(1).first
+    Issue.joins(:smts).select('issues.*, count(smts.id) as count').where('smts.created_at > ?', 7.days.ago).order('count DESC').group('issues.id').limit(1).first
   end
 
 
