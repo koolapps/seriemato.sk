@@ -15,6 +15,9 @@
       </div>
       <%= link_to 'Serie ma to!', new_issue_smt_path(@issue), remote: true, class: 'btn btn-danger' %>
     </div>
+    <div>
+      <%= link_to 'Chcem to riešiť', new_issue_solver_path(@issue), remote: true, class: 'btn btn-success' %>
+    </div>
     <div class="related-issues">
       <h3>Súvisiace problémy</h3>
       <ul class="list-unstyled">

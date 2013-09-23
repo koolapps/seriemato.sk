@@ -6,6 +6,7 @@ Seriemato::Application.routes.draw do
   end
   resources :issues, only: [:show, :index] do
     resources :smts, only: [:new, :create]
+    resources :solvers, only: [:new]
   end
   resources :smts, only: [:update]
   resources :category, only: [:show]
