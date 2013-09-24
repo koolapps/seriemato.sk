@@ -1,3 +1,1 @@
-$('#modal, .modal-backdrop').remove()
-$('body').append('<%=j render('modal') %>')
-$('#modal').modal()
+show_modal('<%=j render('modal') %>')
