@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Click on "Chcem to riesit" button' do
+feature 'Click on "Chcem to riesit" button', js: true do
   scenario 'signing up as solver with valid information' do
     issue = FactoryGirl.create(:issue)
     visit issue_path(issue)
