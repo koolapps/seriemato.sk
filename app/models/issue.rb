@@ -13,8 +13,6 @@ class Issue < ActiveRecord::Base
   validates :name, :short_description, :long_description, :smt_limit, :solvers_limit, presence: true
   validates :smt_limit, :solvers_limit, numericality: { only_integer: true }
 
-  scope :randoms, -> { order('random()').limit(8) }
-
   after_save :update_smts_count
 
   def related_issues
@@ -36,6 +34,11 @@ class Issue < ActiveRecord::Base
   def solvers_progress_in_percent
     percentage(solvers_count, solvers_limit)
   end
+
+  def self.randoms
+    order('random()').limit(8)
+  end
+
 
   private
 
