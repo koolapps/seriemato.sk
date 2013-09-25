@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Click on "Chcem to riesit" button', js: true do
   scenario 'signing up as solver with valid data' do
     visit_issue_and_click_solvers_link
+    expect(page).to have_css 'h4', text: 'Chceš riešiť problém, vieš ale, čo to znamená?'
     fill_and_save_user_data
     expect(page).to have_content 'Ďakujeme! Boli ste pridaný na zoznam riešiteľov tohto problému.'
     expect(page).to have_css '.solvers-count', text: 1
@@ -14,7 +15,7 @@ feature 'Click on "Chcem to riesit" button', js: true do
 
   scenario 'signing up as solver with invalid data' do
     visit_issue_and_click_solvers_link
-    click_button 'Zapíšte ma ako riešiteľa'
+    click_button 'Áno, je to jasné! Chcem to riešiť!'
     expect(page).to have_css 'div.form-errors'
   end
 
@@ -31,7 +32,7 @@ feature 'Click on "Chcem to riesit" button', js: true do
 
   scenario 'solvers sign up form has cancel link' do
     visit_issue_and_click_solvers_link
-    click_button 'Nechcem to riešiť'
+    click_button 'Nie, nechcem to riešiť'
     expect(page).not_to have_css '#modal'
   end
 
@@ -45,6 +46,6 @@ feature 'Click on "Chcem to riesit" button', js: true do
     fill_in 'Meno', with: 'John'
     fill_in 'Priezvisko', with: 'Doe'
     fill_in 'Email', with: 'john.doe@example.com'
-    click_button 'Zapíšte ma ako riešiteľa'
+    click_button 'Áno, je to jasné! Chcem to riešiť!'
   end
 end

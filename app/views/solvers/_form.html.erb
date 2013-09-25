@@ -38,6 +38,9 @@
     <p>
     Toto je to, čo si chcel. Chcel si byť riešiteľom, vytvoril si prvé návrhy riešení, na stretnutí si sa spojil s ďalšími a máte spoločný projekt. Začína to byť trochu viac záväzné, a hlavne, zábavné!
     </p>
+
+    <h2 class="text-center">Takže jasné? Chceš to riešiť?</h2>
+
     <div class="form-group">
       <%= form.label :first_name, 'Meno' %>
       <%= form.text_field :first_name, class: 'form-control' %>
@@ -52,12 +55,11 @@
       <%= form.label :email %>
       <%= form.text_field :email, class: 'form-control' %>
     </div>
-  <h2 class="text-center"><span class="label label-success">Takže jasné? Chceš to riešiť?</span></h2>
   </div>
 
 
   <div class="modal-footer">
-    <%= button_tag 'Nechcem to riešiť', data: { dismiss: :modal }, class: 'btn btn-default' %>
-    <%= form.submit 'Zapíšte ma ako riešiteľa', class: 'btn btn-primary' %>
+    <%= button_tag 'Nie, nechcem to riešiť', data: { dismiss: :modal }, class: 'btn btn-default' %>
+    <%= form.submit 'Áno, je to jasné! Chcem to riešiť!', class: 'btn btn-primary' %>
   </div>
 <% end %>
