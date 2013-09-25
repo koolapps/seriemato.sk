@@ -8,12 +8,14 @@ class SmtsController < ApplicationController
 
   def create
     @smt = issue.smts.build(smt_params)
+
     if params[:commit] == SAVE_DATA_AND_VOTE
-      @smt.validate = true
-      save_user_data_to_cookies
+      @smt.validate = true if params[:commit] == SAVE_DATA_AND_VOTE
     end
+
     if @smt.save
       flash[:success] = 'Ďakujeme! Váš hlas bol započítaný.'
+      save_user_data_to_cookies
     else
       render 'new'
     end
