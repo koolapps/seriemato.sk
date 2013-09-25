@@ -11,17 +11,17 @@
   <div class="col-sm-4">
     <div class="row">
       <div class="col-md-6 text-center">
+        <%= progress_bar(@issue.smt_progress_in_percent, 'progress-bar-danger smt') %>
         <div class="smt-count count-status">
           <%= @issue.smt_count %> / <%= @issue.smt_limit %>
         </div>
-        <%= progress_bar(@issue.smt_progress_in_percent, 'progress-bar-danger smt') %>
         <%= link_to 'Serie ma to!', new_issue_smt_path(@issue), remote: true, class: 'btn btn-danger btn-block' %>
       </div>
       <div class="col-md-6 text-center">
+        <%= progress_bar(@issue.solvers_progress_in_percent, 'progress-bar-success chtr') %>
         <div class="solvers-count count-status">
           <%= @issue.solvers_count %> / <%= @issue.solvers_limit %>
         </div>
-        <%= progress_bar(@issue.solvers_progress_in_percent, 'progress-bar-success chtr') %>
         <%= link_to 'Chcem to riešiť', new_issue_solver_path(@issue), remote: true, class: 'btn btn-success btn-block' %>
       </div>
     </div>
