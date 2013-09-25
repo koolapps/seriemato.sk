@@ -1,1 +1,1 @@
-show_modal('<%=j render('shared/modal', title: 'Kto ste? Čo ste?') %>')
+showModal('<%=j render('shared/modal', title: 'Kto ste? Čo ste?') %>')
