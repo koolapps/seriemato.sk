@@ -89,4 +89,18 @@ describe Issue do
       expect(issue.solvers_count).to eq 11
     end
   end
+
+  describe '#smt_progress_in_percent' do
+    it 'returns SMT clicks completition in percent' do
+      issue = FactoryGirl.create(:issue, fake_smts: 2, smt_limit: 10)
+      expect(issue.smt_progress_in_percent).to be 20
+    end
+  end
+
+  describe '#solvers_progress_in_percent' do
+    it 'returns CHTR clicks completition in percent' do
+      issue = FactoryGirl.create(:issue, fake_solvers: 2, solvers_limit: 10)
+      expect(issue.solvers_progress_in_percent).to be 20
+    end
+  end
 end

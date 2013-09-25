@@ -37,7 +37,19 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def smt_progress_in_percent
+    percentage(smt_count, smt_limit)
+  end
+
+  def solvers_progress_in_percent
+    percentage(solvers_count, solvers_limit)
+  end
+
   private
+
+  def percentage(count, limit)
+    ((count.to_f / limit.to_f) * 100).to_i
+  end
 
   def update_smts_count
     self.update_column :smts_count, fake_smts + self.smts.count
