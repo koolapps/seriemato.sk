@@ -19,11 +19,11 @@ class Admin::IssuesController < AdminController
   end
 
   def edit
-    @issue = Issue.find(params[:id])
+    set_issue
   end
 
   def update
-    @issue = Issue.find(params[:id])
+    set_issue
     if @issue.update(issue_params)
       flash[:success] = 'Issue has been updated.'
       redirect_to_edit_page
@@ -34,6 +34,10 @@ class Admin::IssuesController < AdminController
   end
 
   private
+
+  def set_issue
+    @issue = Issue.find(params[:id])
+  end
 
   def redirect_to_edit_page
     redirect_to edit_admin_issue_url @issue
