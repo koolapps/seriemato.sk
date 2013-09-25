@@ -6,6 +6,7 @@ class SolversController < ApplicationController
 
   def create
     @solver = issue.solvers.build(solver_params)
+
     if @solver.save
       flash[:success] = 'Ďakujeme! Boli ste pridaný na zoznam riešiteľov tohto problému.'
       save_user_data_to_cookies
