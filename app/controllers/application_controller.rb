@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_footer_categories
 
+  private
+
   def set_footer_categories
     @footer_categories = Category.all
   end

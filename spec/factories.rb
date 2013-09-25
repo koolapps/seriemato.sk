@@ -20,6 +20,14 @@ FactoryGirl.define do
         FactoryGirl.create_list(:smt, evaluator.smts_count, issue: issue)
       end
     end
+    factory :issue_with_solvers do
+      ignore do
+        solvers_count 3
+      end
+      after(:create) do |issue, evaluator|
+        FactoryGirl.create_list(:solver, evaluator.solvers_count, issue: issue)
+      end
+    end
   end
 
   factory :category do
@@ -37,6 +45,13 @@ FactoryGirl.define do
   end
 
   factory :smt do
+    issue nil
+  end
+
+  factory :solver do
+    first_name 'John'
+    last_name 'Doe'
+    email 'john.doe@example.com'
     issue nil
   end
 end

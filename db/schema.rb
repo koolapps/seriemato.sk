@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919122546) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130924190622) do
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -52,5 +49,14 @@ ActiveRecord::Schema.define(version: 20130919122546) do
   end
 
   add_index "smts", ["issue_id"], name: "index_smts_on_issue_id", using: :btree
+
+  create_table "solvers", force: true do |t|
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "email"
+    t.integer "issue_id"
+  end
+
+  add_index "solvers", ["issue_id"], name: "index_solvers_on_issue_id", using: :btree
 
 end

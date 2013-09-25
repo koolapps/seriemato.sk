@@ -1,6 +1,7 @@
 class Issue < ActiveRecord::Base
   belongs_to :category
   has_many :smts, dependent: :destroy
+  has_many :solvers, dependent: :destroy
 
   has_attached_file :picture,
                     styles: {
@@ -25,6 +26,14 @@ class Issue < ActiveRecord::Base
       smts.count + fake_smts
     else
       smts.count
+    end
+  end
+
+  def solvers_count
+    if fake_solvers
+      solvers.count + fake_solvers
+    else
+      solvers.count
     end
   end
 

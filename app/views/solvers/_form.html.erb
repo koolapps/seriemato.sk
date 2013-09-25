@@ -1,0 +1,63 @@
+<%= form_for [@solver.issue, @solver], remote: true do |form| %>
+  <div class="modal-body">
+    <%= image_tag('chtr-explain.png') %>
+
+    <% if @solver.errors.any? %>
+      <div class="alert alert-danger form-errors">
+        Prosím vyplňte chýbajúce údaje.
+      </div>
+    <% end %>
+
+    <h4>1) Prihlásiš sa ako riešiteľ (nezáväzne)</h4>
+    <p>
+    A teraz nastáva tá úvodná, najnudnejšia časť - čakanie. Po prihlásení ako riešiteľ čakáš, kým problém získa dostatočné množstvo seriemato a chcemtoriešiť klikov. Ty v podstate nemusíš robiť nič. Ale môžeš samozrejme problému pomôcť získať dostatočnú podporu - promovať ho medzi známymi, ktorých môže trápiť, alebo aj tými, ktorí by ho mohli chcieť riešiť.
+    </p>
+
+    <h4>2) Problém nazbieral dosť SMT a CHTR klikov</h4>
+    <p>
+    V tomto momente my organizujeme riešiteľské stretnutie a Tebe príde naň pozvánka. V tomto momente už ide trochu do tuhého. Máš 2 možnosti:
+    </p>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>3a) Neprídeš</h4>
+        <p>
+        Ok. Nestíhaš, nevadí. Tu to pre Teba ako riešiteľa sčasti končí. Ale nie úplne. Stále môžeš sledovať, čo sa s problémom deje a možno sa neskôr do riešenia zapojiť.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h4>3b) Zúčastníš sa</h4>
+        <p>
+        A zábava začína. Stretneš sa s ďalšími riešiteľmi a spolu budete TVORIŤ. Riešení bude mnoho a pre Teba je tu šanca priložiť ruku k dielu, pomôcť ostatným riešiť problém a možno začať zaujímavý projekt.
+        </p>
+      </div>
+    </div>
+    <p>
+
+    <h4>4) Pracuješ na riešeniach</h4>
+    <p>
+    Toto je to, čo si chcel. Chcel si byť riešiteľom, vytvoril si prvé návrhy riešení, na stretnutí si sa spojil s ďalšími a máte spoločný projekt. Začína to byť trochu viac záväzné, a hlavne, zábavné!
+    </p>
+    <div class="form-group">
+      <%= form.label :first_name, 'Meno' %>
+      <%= form.text_field :first_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :last_name, 'Priezvisko' %>
+      <%= form.text_field :last_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: 'form-control' %>
+    </div>
+  <h2 class="text-center"><span class="label label-success">Takže jasné? Chceš to riešiť?</span></h2>
+  </div>
+
+
+  <div class="modal-footer">
+    <%= button_tag 'Nechcem to riešiť', data: { dismiss: :modal }, class: 'btn btn-default' %>
+    <%= form.submit 'Zapíšte ma ako riešiteľa', class: 'btn btn-primary' %>
+  </div>
+<% end %>

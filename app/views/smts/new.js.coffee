@@ -1,1 +1,1 @@
-show_modal('<%=j render('modal') %>')
+show_modal('<%=j render('shared/modal') %>')

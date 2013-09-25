@@ -10,6 +10,7 @@ describe Issue do
   it { should validate_numericality_of(:solvers_limit) }
   it { should belong_to :category }
   it { should have_many :smts }
+  it { should have_many :solvers }
   it { should have_attached_file(:picture) }
 
   it 'has correct picture styles' do
@@ -72,6 +73,20 @@ describe Issue do
       issue = FactoryGirl.create(:issue, fake_smts: 10)
       FactoryGirl.create(:smt, issue: issue)
       expect(issue.smt_count).to eq 11
+    end
+  end
+
+  describe '#solvers_count' do
+    it 'returns number of solvers' do
+      issue = FactoryGirl.create(:issue)
+      FactoryGirl.create(:solver, issue: issue)
+      expect(issue.solvers_count).to eq 1
+    end
+
+    it 'adds fake solvers to total solvers count' do
+      issue = FactoryGirl.create(:issue, fake_solvers: 10)
+      FactoryGirl.create(:solver, issue: issue)
+      expect(issue.solvers_count).to eq 11
     end
   end
 end
