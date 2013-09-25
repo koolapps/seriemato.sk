@@ -22,19 +22,11 @@ class Issue < ActiveRecord::Base
   end
 
   def smt_count
-    if fake_smts
-      smts.count + fake_smts
-    else
-      smts.count
-    end
+    add_fake_value(smts.count, fake_smts)
   end
 
   def solvers_count
-    if fake_solvers
-      solvers.count + fake_solvers
-    else
-      solvers.count
-    end
+    add_fake_value(solvers.count, fake_solvers)
   end
 
   def smt_progress_in_percent
@@ -47,11 +39,19 @@ class Issue < ActiveRecord::Base
 
   private
 
+  def add_fake_value(value, fake_value)
+    if fake_value
+      value + fake_value
+    else
+      value
+    end
+  end
+
   def percentage(count, limit)
     ((count.to_f / limit.to_f) * 100).to_i
   end
 
   def update_smts_count
-    self.update_column :smts_count, fake_smts + self.smts.count
+    self.update_column :smts_count, smt_count
   end
 end
