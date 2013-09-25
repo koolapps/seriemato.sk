@@ -1,5 +1,5 @@
 Seriemato::Application.routes.draw do
-  root to: 'index_pages#index'
+  root to: 'index_pages#show'
   namespace :admin do
     resources :issues, only: [:new, :create, :edit, :index, :update]
     resources :categories, only: [:new, :create, :edit, :update, :index, :destroy]
