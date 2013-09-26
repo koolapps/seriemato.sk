@@ -1,6 +1,20 @@
 require 'factory_girl'
 
 FactoryGirl.define do
+  factory :category do
+    sequence :name do |n|
+      "Category #{n}"
+    end
+    factory :category_with_issues do
+      ignore do
+        issues_count 3
+      end
+      after(:create) do |category, evaluator|
+        FactoryGirl.create_list(:issue, evaluator.issues_count, category: category)
+      end
+    end
+  end
+
   factory :issue do
     sequence :name do |n| 
       "Issue ##{n}"
@@ -26,20 +40,6 @@ FactoryGirl.define do
       end
       after(:create) do |issue, evaluator|
         FactoryGirl.create_list(:solver, evaluator.solvers_count, issue: issue)
-      end
-    end
-  end
-
-  factory :category do
-    sequence :name do |n|
-      "Category #{n}"
-    end
-    factory :category_with_issues do
-      ignore do
-        issues_count 3
-      end
-      after(:create) do |category, evaluator|
-        FactoryGirl.create_list(:issue, evaluator.issues_count, category: category)
       end
     end
   end
