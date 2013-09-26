@@ -44,7 +44,7 @@ feature 'Index page' do
       expect(page).to have_css '.smt-count', text: 'Serie to: 1 / 10'
       expect(page).to have_css '.solvers-count', text: 'Chce to riešiť: 2 / 10'
       expect(page).to have_css '.progress-bar.smt', text: '10% Hotovo'
-      expect(page).to have_css '.progress-bar.solver', text: '20% Hotovo'
+      expect(page).to have_css '.progress-bar.solvers', text: '20% Hotovo'
     end
   end
 
