@@ -18,11 +18,11 @@ describe Issue do
     expect(Issue.attachment_definitions[:picture][:styles][:large]).to eq '750x250#'
   end
 
-  it 'should respond to :fake_smts' do
+  it 'responds to :fake_smts' do
     expect(Issue.new).to respond_to(:fake_smts)
   end
 
-  it 'should respond to :fake_solvers' do
+  it 'responds to :fake_solvers' do
     expect(Issue.new).to respond_to(:fake_smts)
   end
 
