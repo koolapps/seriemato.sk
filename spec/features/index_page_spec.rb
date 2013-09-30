@@ -41,8 +41,6 @@ feature 'Index page' do
       expect(page).to have_css 'p', text: 'This is my issue'
       expect(page).to have_css 'a img[src*="large_picture.jpg"]'
       expect(page).to have_link issue.name, href: issue_path(issue)
-      expect(page).to have_css '.smt-count', text: 'Serie to: 1 / 10'
-      expect(page).to have_css '.solvers-count', text: 'Chce to riešiť: 2 / 10'
       expect(page).to have_css '.progress-bar.smt', text: '10% Hotovo'
       expect(page).to have_css '.progress-bar.solvers', text: '20% Hotovo'
     end
