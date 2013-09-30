@@ -7,14 +7,14 @@
       <h3><%= link_to issue.name, issue_path(issue) %></h3>
       <p><%= issue.short_description %>
     </div>
-    <p>
-      <span class="smt-count">Serie to: <%= issue.smt_count %> / <%= issue.smt_limit %></span>
-      <%= progress_bar(issue.smt_progress_in_percent, 'smt progress-bar-danger') %>
-    </p>
-    <p>
-      <span class="solvers-count">Chce to riešiť: <%= issue.solvers_count %> / <%= issue.solvers_limit %></span>
-      <%= progress_bar(issue.solvers_progress_in_percent, 'solvers progress-bar-success') %>
-    </p>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= link_to progress_bar(issue.smt_progress_in_percent, 'smt progress-bar-danger', data: { toggle: 'tooltip', title: "Serie to: #{issue.smt_count} / #{issue.smt_limit}"}), issue_path(issue) %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to progress_bar(issue.solvers_progress_in_percent, 'solvers progress-bar-success', data: { toggle: 'tooltip', title: "Chce to riešiť: #{issue.solvers_count} / #{issue.solvers_limit}"}), issue_path(issue) %>
+      </div>
+    </div>
   </div>
 <% end %>
 <% if issue_counter == 3 %>
