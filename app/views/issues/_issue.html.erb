@@ -9,10 +9,10 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <%= link_to progress_bar(issue.smt_progress_in_percent, 'smt progress-bar-danger', data: { toggle: 'tooltip', title: "Serie to: #{issue.smt_count} / #{issue.smt_limit}"}), issue_path(issue) %>
+        <%= link_to progress_bar(issue.smt_progress_in_percent, 'smt progress-bar-danger', data: { toggle: 'tooltip', title: "Serie to: #{issue.smt_count}&nbsp;/&nbsp;#{issue.smt_limit}"}), issue_path(issue) %>
       </div>
       <div class="col-sm-6">
-        <%= link_to progress_bar(issue.solvers_progress_in_percent, 'solvers progress-bar-success', data: { toggle: 'tooltip', title: "Chce to riešiť: #{issue.solvers_count} / #{issue.solvers_limit}"}), issue_path(issue) %>
+        <%= link_to progress_bar(issue.solvers_progress_in_percent, 'solvers progress-bar-success', data: { toggle: 'tooltip', title: "Chce to riešiť: #{issue.solvers_count}&nbsp;/&nbsp;#{issue.solvers_limit}"}), issue_path(issue) %>
       </div>
     </div>
   </div>
