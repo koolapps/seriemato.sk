@@ -7,6 +7,8 @@ module TagsHelper
 </div>].html_safe
   end
 
+  private
+
   def data_attributes(data)
     if data
       data.map { |key, value| %{data-#{key}="#{value}"} }.join(' ')
