@@ -1,0 +1,2 @@
+<h2>Problémy v kategórii: <%= @category.name %></h2>
+<%= render 'application/issues_categories', issues: @category.issues, categories: Category.all %>

@@ -1,0 +1,17 @@
+<div class="issues">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="row">
+        <%= render(issues) %>
+      </div>
+    </div>
+    <div class="col-sm-3 categories-sidebar">
+      <h3>Oblasti problémov</h3>
+      <ul class="list-unstyled">
+        <li><%= link_to 'Všetko', issues_path %></li>
+        <%= render collection: categories, partial: 'sidebar_category' %>
+      </ul>
+    </div>
+  </div>
+</div>
+<%= javascript_tag render('tooltip') %>

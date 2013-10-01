@@ -12,6 +12,6 @@ Seriemato::Application.routes.draw do
     resources :solvers, only: [:new, :create]
   end
 
-  resources :category, only: [:show]
+  resources :categories, only: [:show]
   resources :smts, only: [:update]
 end
