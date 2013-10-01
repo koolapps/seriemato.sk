@@ -19,16 +19,13 @@ class Issue < ActiveRecord::Base
     Issue.where("category_id = ? AND id != ?", self.category_id, self.id)
   end
 
-  def smt_count
-    add_fake_value(smts.count, fake_smts)
-  end
 
   def solvers_count
     add_fake_value(solvers.count, fake_solvers)
   end
 
   def smt_progress_in_percent
-    percentage(smt_count, smt_limit)
+    percentage(smts_count, smt_limit)
   end
 
   def solvers_progress_in_percent
@@ -55,6 +52,10 @@ class Issue < ActiveRecord::Base
   end
 
   def update_smts_count
-    self.update_column :smts_count, smt_count
+    self.update_column :smts_count, smts_count_with_fake_value
+  end
+
+  def smts_count_with_fake_value
+    add_fake_value(smts.count, fake_smts)
   end
 end

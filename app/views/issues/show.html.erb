@@ -13,7 +13,7 @@
       <div class="col-md-6 text-center">
         <%= progress_bar(@issue.smt_progress_in_percent, 'progress-bar-danger smt') %>
         <div class="smt-count count-status">
-          <%= @issue.smt_count %> / <%= @issue.smt_limit %>
+          <%= @issue.smts_count %> / <%= @issue.smt_limit %>
         </div>
         <%= link_to 'Serie ma to!', new_issue_smt_path(@issue), remote: true, class: 'btn btn-danger btn-block' %>
       </div>
