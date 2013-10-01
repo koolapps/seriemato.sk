@@ -8,38 +8,41 @@
       </div>
     <% end %>
 
-    <h4>1) Prihlásiš sa ako riešiteľ (nezáväzne)</h4>
-    <p>
-    A teraz nastáva tá úvodná, najnudnejšia časť - čakanie. Po prihlásení ako riešiteľ čakáš, kým problém získa dostatočné množstvo seriemato a chcemtoriešiť klikov. Ty v podstate nemusíš robiť nič. Ale môžeš samozrejme problému pomôcť získať dostatočnú podporu - promovať ho medzi známymi, ktorých môže trápiť, alebo aj tými, ktorí by ho mohli chcieť riešiť.
-    </p>
+    <% if show_long_text? %>
 
-    <h4>2) Problém nazbieral dosť SMT a CHTR klikov</h4>
-    <p>
-    V tomto momente my organizujeme riešiteľské stretnutie a Tebe príde naň pozvánka. V tomto momente už ide trochu do tuhého. Máš 2 možnosti:
-    </p>
+      <h4>1) Prihlásiš sa ako riešiteľ (nezáväzne)</h4>
+      <p>
+      A teraz nastáva tá úvodná, najnudnejšia časť - čakanie. Po prihlásení ako riešiteľ čakáš, kým problém získa dostatočné množstvo seriemato a chcemtoriešiť klikov. Ty v podstate nemusíš robiť nič. Ale môžeš samozrejme problému pomôcť získať dostatočnú podporu - promovať ho medzi známymi, ktorých môže trápiť, alebo aj tými, ktorí by ho mohli chcieť riešiť.
+      </p>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>3a) Neprídeš</h4>
-        <p>
-        Ok. Nestíhaš, nevadí. Tu to pre Teba ako riešiteľa sčasti končí. Ale nie úplne. Stále môžeš sledovať, čo sa s problémom deje a možno sa neskôr do riešenia zapojiť.
-        </p>
+      <h4>2) Problém nazbieral dosť SMT a CHTR klikov</h4>
+      <p>
+      V tomto momente my organizujeme riešiteľské stretnutie a Tebe príde naň pozvánka. V tomto momente už ide trochu do tuhého. Máš 2 možnosti:
+      </p>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>3a) Neprídeš</h4>
+          <p>
+          Ok. Nestíhaš, nevadí. Tu to pre Teba ako riešiteľa sčasti končí. Ale nie úplne. Stále môžeš sledovať, čo sa s problémom deje a možno sa neskôr do riešenia zapojiť.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h4>3b) Zúčastníš sa</h4>
+          <p>
+          A zábava začína. Stretneš sa s ďalšími riešiteľmi a spolu budete TVORIŤ. Riešení bude mnoho a pre Teba je tu šanca priložiť ruku k dielu, pomôcť ostatným riešiť problém a možno začať zaujímavý projekt.
+          </p>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <h4>3b) Zúčastníš sa</h4>
-        <p>
-        A zábava začína. Stretneš sa s ďalšími riešiteľmi a spolu budete TVORIŤ. Riešení bude mnoho a pre Teba je tu šanca priložiť ruku k dielu, pomôcť ostatným riešiť problém a možno začať zaujímavý projekt.
-        </p>
-      </div>
-    </div>
-    <p>
+      <p>
 
-    <h4>4) Pracuješ na riešeniach</h4>
-    <p>
-    Toto je to, čo si chcel. Chcel si byť riešiteľom, vytvoril si prvé návrhy riešení, na stretnutí si sa spojil s ďalšími a máte spoločný projekt. Začína to byť trochu viac záväzné, a hlavne, zábavné!
-    </p>
+      <h4>4) Pracuješ na riešeniach</h4>
+      <p>
+      Toto je to, čo si chcel. Chcel si byť riešiteľom, vytvoril si prvé návrhy riešení, na stretnutí si sa spojil s ďalšími a máte spoločný projekt. Začína to byť trochu viac záväzné, a hlavne, zábavné!
+      </p>
 
-    <h2 class="text-center">Takže jasné? Chceš to riešiť?</h2>
+      <h2 class="text-center">Takže jasné? Chceš to riešiť?</h2>
+    <% end %>
 
     <div class="form-group">
       <%= form.label :first_name, 'Meno' %>

@@ -36,6 +36,17 @@ feature 'Click on "Chcem to riesit" button', js: true do
     expect(page).not_to have_css '#modal'
   end
 
+  scenario 'sign up as solver show long text just once' do
+    visit_issue_and_click_solvers_link
+    expect(page).to have_content "Takže jasné? Chceš to riešiť?"
+    fill_and_save_user_data
+    sleep 1
+    visit_issue_and_click_solvers_link
+    click_link 'Chcem to riešiť'
+    expect(page).to have_content 'Chceš riešiť problém, vieš ale, čo to znamená?'
+    expect(page).not_to have_content "Takže jasné? Chceš to riešiť?"
+  end
+
   def visit_issue_and_click_solvers_link
     issue = FactoryGirl.create(:issue)
     visit issue_path(issue)

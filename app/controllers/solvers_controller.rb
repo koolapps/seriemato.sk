@@ -1,4 +1,6 @@
 class SolversController < ApplicationController
+  helper_method :show_long_text?
+
   def new
     @solver = issue.solvers.build
     restore_user_data_from_cookies
@@ -29,11 +31,16 @@ class SolversController < ApplicationController
     cookies[:solver_first_name] = { value: solver_params[:first_name], expires: 3.months.from_now }
     cookies[:solver_last_name] = { value: solver_params[:last_name], expires: 3.months.from_now }
     cookies[:solver_email] = { value: solver_params[:email], expires: 3.months.from_now }
+    cookies[:solver_saw_long_text?] = true
   end
 
   def restore_user_data_from_cookies
     @solver.first_name = cookies[:solver_first_name]
     @solver.last_name = cookies[:solver_last_name]
     @solver.email = cookies[:solver_email]
+  end
+
+  def show_long_text?
+    !cookies[:solver_saw_long_text?]
   end
 end
