@@ -25,6 +25,7 @@ group :development do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'debugger'
+  gem 'rack-mini-profiler'
 end
 
 group :test do
