@@ -19,12 +19,16 @@ describe Issue do
     expect(Issue.attachment_definitions[:picture][:styles][:large]).to eq '750x250#'
   end
 
-  it 'responds to :fake_smts' do
+  it 'responds to fake_smts' do
     expect(Issue.new).to respond_to(:fake_smts)
   end
 
-  it 'responds to :fake_solvers' do
+  it 'responds to fake_solvers' do
     expect(Issue.new).to respond_to(:fake_smts)
+  end
+
+  it 'responds to published?' do
+    expect(Issue.new).to respond_to(:published?)
   end
 
   it 'has valid factory' do
@@ -39,9 +43,18 @@ describe Issue do
     expect(issue.smts_count).to be 3
   end
 
+  describe 'default scope' do
+    it 'returns just published issues' do
+      published_issue = FactoryGirl.create(:issue, published: true)
+      not_published_issue = FactoryGirl.create(:issue, published: false)
+      expect(Issue.all).to include(published_issue)
+      expect(Issue.all).not_to include(not_published_issue)
+    end
+  end
+
   describe '#random_issues' do
     it 'returns eight random issues' do
-      10.times { FactoryGirl.create(:issue) }
+      9.times { FactoryGirl.create(:published_issue) }
       expect(Issue.randoms.size).to be 8
     end
   end
@@ -49,8 +62,8 @@ describe Issue do
   describe '#related_issues' do
     it 'returns other issues from same category' do
       category = FactoryGirl.create(:category)
-      issue = FactoryGirl.create(:issue, category: category)
-      other_issue = FactoryGirl.create(:issue, category: category)
+      issue = FactoryGirl.create(:published_issue, category: category)
+      other_issue = FactoryGirl.create(:published_issue, category: category)
       expect(issue.related_issues.to_a).to eq [other_issue]
     end
 

@@ -20,7 +20,7 @@ feature 'Index page' do
   end
 
   scenario 'is showing 8 random issues' do
-    9.times { FactoryGirl.create(:issue) }
+    9.times { FactoryGirl.create(:published_issue) }
     visit root_path
     within '.issues' do
       expect(page).to have_css '.issue', count: 8
@@ -29,7 +29,7 @@ feature 'Index page' do
   end
 
   scenario 'has all needed elements for random issue' do
-    issue = FactoryGirl.create(:issue,
+    issue = FactoryGirl.create(:published_issue,
                                name: 'My Issue',
                                short_description: 'This is my issue',
                                picture: picture_file('large_picture.jpg'),
@@ -73,7 +73,7 @@ feature 'Index page' do
 
   scenario 'has page statistics' do
     category = FactoryGirl.create(:category)
-    issue = FactoryGirl.create(:issue_with_smts, smts_count: 1, category: category)
+    issue = FactoryGirl.create(:issue_with_smts, smts_count: 1, category: category, published: true)
     visit root_path
     within 'div.statistics' do
       expect(page).to have_css '.total-issues', text: 1

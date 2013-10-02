@@ -15,6 +15,10 @@ class Issue < ActiveRecord::Base
 
   after_save :update_smts_count
 
+  def self.default_scope
+    where('published IS true')
+  end
+
   def related_issues
     Issue.where("category_id = ? AND id != ?", self.category_id, self.id)
   end

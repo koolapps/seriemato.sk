@@ -10,4 +10,8 @@ class Smt < ActiveRecord::Base
   def validate?
     @validate
   end
+
+  def issue
+    Issue.unscoped { super }
+  end
 end

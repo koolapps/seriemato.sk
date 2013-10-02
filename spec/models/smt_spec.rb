@@ -18,4 +18,13 @@ describe Smt do
     FactoryGirl.create(:smt, issue: issue)
     expect(issue.smts_count).to be 1
   end
+
+  describe '#issue' do
+    it 'returns issue even if it is not published (unscoped)' do
+      issue = FactoryGirl.create(:issue, published: false)
+      smt = FactoryGirl.create(:smt, issue: issue)
+      smt.reload
+      expect(smt.issue).to eq issue
+    end
+  end
 end

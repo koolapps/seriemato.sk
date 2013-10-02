@@ -57,5 +57,10 @@
     </div>
   </div>
 
-    <%= form.submit class: 'btn btn-primary' %>
+  <div class="form-group">
+    <%= form.label :published do %>
+      <%= form.check_box :published %> Published
+    <% end %>
+  </div>
+  <%= form.submit class: 'btn btn-primary' %>
   <% end %>

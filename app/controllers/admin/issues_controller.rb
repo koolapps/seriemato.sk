@@ -1,6 +1,6 @@
 class Admin::IssuesController < AdminController
   def index
-    @issues = Issue.all
+    @issues = Issue.all.unscoped
   end
 
   def new
@@ -36,7 +36,7 @@ class Admin::IssuesController < AdminController
   private
 
   def set_issue
-    @issue = Issue.find(params[:id])
+    @issue = Issue.unscoped.find(params[:id])
   end
 
   def redirect_to_edit_page
@@ -58,7 +58,8 @@ class Admin::IssuesController < AdminController
              :fake_smts,
              :fake_solvers,
              :category_id,
-             :picture
+             :picture,
+             :published
             )
   end
 end

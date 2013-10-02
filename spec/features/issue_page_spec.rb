@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Issue page' do
   scenario 'has all needed elements' do
-    issue = FactoryGirl.create(:issue,
+    issue = FactoryGirl.create(:published_issue,
                                picture: picture_file('large_picture.jpg'),
                                fake_smts: 1,
                                fake_solvers: 2,
@@ -19,8 +19,8 @@ feature 'Issue page' do
 
   scenario 'list related issues' do
     category = FactoryGirl.create(:category)
-    issue = FactoryGirl.create(:issue, category: category)
-    other_issue = FactoryGirl.create(:issue, category: category)
+    issue = FactoryGirl.create(:published_issue, category: category)
+    other_issue = FactoryGirl.create(:published_issue, category: category)
     visit issue_path(issue)
     within 'div.related-issues' do
       expect(page).to have_css 'h3', text: 'Súvisiace problémy'
@@ -29,7 +29,7 @@ feature 'Issue page' do
   end
 
   scenario 'click on SMT button and vote for the problem', js: true do
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:published_issue)
     visit issue_path(issue)
     click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
@@ -39,7 +39,7 @@ feature 'Issue page' do
   end
 
   scenario 'click on SMT button and enter user data', js: true do
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:published_issue)
     visit issue_path(issue)
     click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
@@ -61,7 +61,7 @@ feature 'Issue page' do
   end
 
   scenario 'click on SMT button and enter user data saves user data in cookies', js: true do
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:published_issue)
     visit issue_path(issue)
     click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'
@@ -85,7 +85,7 @@ feature 'Issue page' do
   end
 
   scenario 'click on SMT buttong and send empty user data', js: true do
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:published_issue)
     visit issue_path(issue)
     click_link 'Serie ma to!'
     expect(page).to have_css 'h4', text: 'Kto ste? Čo ste?'

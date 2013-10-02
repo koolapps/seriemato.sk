@@ -12,4 +12,13 @@ describe Solver do
     solver = FactoryGirl.create(:solver)
     expect(solver).to be_valid
   end
+
+  describe '#issue' do
+    it 'return issue even if it is not published (unscoped query)' do
+      issue = FactoryGirl.create(:issue, published: false)
+      solver = FactoryGirl.create(:solver, issue: issue)
+      solver.reload
+      expect(solver.issue).to eq issue
+    end
+  end
 end

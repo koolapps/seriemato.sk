@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Viewing issues in category' do
   scenario 'showing all issues in given category' do
     category = FactoryGirl.create(:category)
-    issue = FactoryGirl.create(:issue, category: category)
+    issue = FactoryGirl.create(:published_issue, category: category)
     visit category_path(category)
     expect(page).to have_css 'h2', text: "Problémy v kategórii: #{category.name}"
     within "#issue_#{issue.id}" do

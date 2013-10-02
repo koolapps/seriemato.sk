@@ -27,11 +27,19 @@ feature 'Manage issues' do
     expect(page).not_to have_css 'div.picture img'
   end
 
-  scenario 'selecting existing story from index' do
+  scenario 'selecting existing issue from index' do
     issue = FactoryGirl.create(:issue)
     visit admin_issues_path
     expect(page).to have_css 'h1', text: 'All Issues'
     expect(page).to have_link issue.name, href: edit_admin_issue_path(issue)
+  end
+
+  scenario 'lists also not published issues in index' do
+    published = FactoryGirl.create(:issue, published: true)
+    not_published = FactoryGirl.create(:issue, published: false)
+    visit admin_issues_path
+    expect(page).to have_link published.name, href: edit_admin_issue_path(published)
+    expect(page).to have_link not_published.name, href: edit_admin_issue_path(not_published)
   end
 
   scenario 'editing existing issue' do
@@ -66,6 +74,7 @@ feature 'Manage issues' do
     fill_in 'Fake SMTs', with: 10
     fill_in 'Fake solvers', with: 15
     attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/large_picture.jpg'
+    check 'Published'
   end
 
   def validate_form
@@ -77,5 +86,7 @@ feature 'Manage issues' do
     expect(page).to have_css 'input#issue_fake_solvers[value="15"]'
     expect(page).to have_css 'textarea', text: 'Long text'
     expect(page).to have_css 'img[src*="large_picture.jpg"]'
+    checkbox = find('#issue_published')
+    expect(checkbox).to be_checked
   end
 end

@@ -24,6 +24,9 @@ FactoryGirl.define do
     smt_limit 1
     solvers_limit 2
     category
+    factory :published_issue do
+      published 1
+    end
     factory :issue_with_picture do
       picture { picture_file }
     end

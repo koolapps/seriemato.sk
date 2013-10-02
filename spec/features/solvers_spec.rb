@@ -48,7 +48,7 @@ feature 'Click on "Chcem to riesit" button', js: true do
   end
 
   def visit_issue_and_click_solvers_link
-    issue = FactoryGirl.create(:issue)
+    issue = FactoryGirl.create(:published_issue)
     visit issue_path(issue)
     click_link 'Chcem to riešiť'
   end
