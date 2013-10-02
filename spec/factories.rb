@@ -23,6 +23,7 @@ FactoryGirl.define do
     long_description "issue issue"
     smt_limit 1
     solvers_limit 2
+    category
     factory :issue_with_picture do
       picture { picture_file }
     end

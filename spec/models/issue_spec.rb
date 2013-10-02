@@ -6,6 +6,7 @@ describe Issue do
   it { should validate_presence_of(:long_description) }
   it { should validate_presence_of(:smt_limit) }
   it { should validate_presence_of(:solvers_limit) }
+  it { should validate_presence_of(:category) }
   it { should validate_numericality_of(:smt_limit) }
   it { should validate_numericality_of(:solvers_limit) }
   it { should belong_to :category }

@@ -5,6 +5,7 @@ Seriemato::Application.routes.draw do
   namespace :admin do
     resources :categories, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :issues, only: [:new, :create, :edit, :index, :update]
+    resources :smts, only: [:index]
   end
 
   resources :issues, only: [:show, :index] do

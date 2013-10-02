@@ -10,7 +10,7 @@ class Issue < ActiveRecord::Base
                     },
                     default_url: '/images/missing.png'
 
-  validates :name, :short_description, :long_description, :smt_limit, :solvers_limit, presence: true
+  validates :name, :short_description, :long_description, :smt_limit, :solvers_limit, :category, presence: true
   validates :smt_limit, :solvers_limit, numericality: { only_integer: true }
 
   after_save :update_smts_count

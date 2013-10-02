@@ -13,6 +13,7 @@ gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass
 gem 'high_voltage'
 gem 'paperclip'
 gem 'email_validator'
+gem 'haml'
 
 group :test, :development do
   gem 'rspec-rails'
