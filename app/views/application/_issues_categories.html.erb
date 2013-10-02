@@ -4,6 +4,11 @@
       <div class="row">
         <%= render(issues) %>
       </div>
+      <% if request.original_url == root_url %>
+        <div class="text-center">
+          <%= link_to 'Prezerať ďalšie problémy', issues_path, class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
     <div class="col-sm-3 categories-sidebar">
       <h3>Oblasti problémov</h3>

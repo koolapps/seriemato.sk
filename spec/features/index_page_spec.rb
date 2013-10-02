@@ -20,9 +20,12 @@ feature 'Index page' do
   end
 
   scenario 'is showing 8 random issues' do
-    10.times { FactoryGirl.create(:issue) }
+    9.times { FactoryGirl.create(:issue) }
     visit root_path
-    expect(page).to have_css '.issue', count: 8
+    within '.issues' do
+      expect(page).to have_css '.issue', count: 8
+      expect(page).to have_link 'Prezerať ďalšie problémy', href: issues_path
+    end
   end
 
   scenario 'has all needed elements for random issue' do
