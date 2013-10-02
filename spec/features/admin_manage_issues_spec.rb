@@ -2,13 +2,16 @@ require 'spec_helper'
 
 feature 'Manage issues' do
   scenario 'adding issue with valid information' do
+    FactoryGirl.create(:category, name: 'Category 1')
     visit new_admin_issue_path
     expect(page).to have_css 'h1', 'Create Issue'
     fill_form_with_values
+    select 'Category 1', from: 'Category'
     click_button 'Create Issue'
     expect(page).to have_content 'Issue has been created.'
     expect(page).to have_css 'h1', text: 'Edit Issue'
     validate_form
+    expect(page).to have_select('Category', selected: 'Category 1')
   end
 
   scenario 'adding issue with invalid information' do
@@ -33,13 +36,16 @@ feature 'Manage issues' do
 
   scenario 'editing existing issue' do
     issue = FactoryGirl.create(:issue)
+    FactoryGirl.create(:category, name: 'New Category')
     visit edit_admin_issue_path issue
     fill_form_with_values
+    select 'New Category', from: 'Category'
     click_button 'Update Issue'
     expect(page).to have_content 'Issue has been updated.'
     expect(page).to have_css 'h1', text: 'Edit Issue'
     visit edit_admin_issue_path issue
     validate_form
+    expect(page).to have_select('Category', selected: 'New Category')
   end
 
   scenario 'adding picture to existing issue with invalid information' do
@@ -49,17 +55,6 @@ feature 'Manage issues' do
     attach_file 'Picture', File.dirname(__FILE__) + '/../test_pictures/large_picture.jpg'
     click_button 'Update Issue'
     expect(page).not_to have_css 'div.picture img'
-  end
-
-  scenario 'selecting category for the issue' do
-    issue = FactoryGirl.create(:issue)
-    FactoryGirl.create(:category, name: 'Category 1')
-    FactoryGirl.create(:category, name: 'Category 2')
-    visit edit_admin_issue_path issue
-    expect(page).to have_select('Category', options: ['-- Select Category --', 'Category 1', 'Category 2'])
-    select 'Category 2', from: 'Category'
-    click_button 'Update Issue'
-    expect(page).to have_select('Category', selected: 'Category 2')
   end
 
   def fill_form_with_values
