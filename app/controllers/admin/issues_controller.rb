@@ -33,6 +33,12 @@ class Admin::IssuesController < AdminController
     end
   end
 
+  def destroy
+    set_issue.destroy
+    flash[:success] = 'Issue has been deleted.'
+    redirect_to admin_issues_url
+  end
+
   private
 
   def set_issue

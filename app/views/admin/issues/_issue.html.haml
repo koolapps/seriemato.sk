@@ -1,0 +1,3 @@
+%tr
+  %td= link_to issue.name, edit_admin_issue_path(issue)
+  %td.text-right= link_to 'Delete', admin_issue_path(issue), method: :delete, data: { confirm: 'Are you sure?' }

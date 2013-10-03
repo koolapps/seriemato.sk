@@ -65,6 +65,18 @@ feature 'Manage issues' do
     expect(page).not_to have_css 'div.picture img'
   end
 
+  scenario 'deleting existing issue' do
+    create_and_try_to_delete_issue
+    expect(page).to have_content 'Issue has been deleted.'
+    expect(page).not_to have_link 'Delete'
+  end
+
+  scenario 'deleting issue without accepting confirmation popup doesnt delete issue', js: true do
+    page.driver.dismiss_js_confirms!
+    create_and_try_to_delete_issue
+    expect(page).to have_link 'Delete'
+  end
+
   def fill_form_with_values
     fill_in 'Name', with: 'This is new issue'
     fill_in 'Short description', with: 'Short text'
@@ -88,5 +100,11 @@ feature 'Manage issues' do
     expect(page).to have_css 'img[src*="large_picture.jpg"]'
     checkbox = find('#issue_published')
     expect(checkbox).to be_checked
+  end
+
+  def create_and_try_to_delete_issue
+    FactoryGirl.create(:issue)
+    visit admin_issues_path
+    click_link 'Delete'
   end
 end
