@@ -1,26 +1,38 @@
 @import "bootstrap";
 
-body {
-  padding: 20px 0 20px 0;
+$orange: #FF7600;
+$kaki: #F1F0DF;
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 img {
   max-width: 100%;
 }
 
-.navbar .navbar-brand {
-  padding: 0 15px 5px 15px; 
+nav.navbar.navbar-default {
+  background-color: #ffffff;
+  margin-bottom: 0;
+  .navbar-brand {
+    padding: 0 15px 5px 15px; 
+  }
+  .navbar-nav > li > a {
+    padding-top: 26px;
+    padding-bottom: 27px;
+  }
 }
 
-.navbar-nav > li > a {
-  padding-top: 26px;
-  padding-bottom: 27px;
-}
 
 div.explanation {
+  background: $kaki;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-bottom: 20px;
   img {
     max-width: 100%;
+    margin-bottom: 20px;
   }
 }
 
@@ -30,6 +42,20 @@ div.explanation {
   }
   .thumbnail {
     border: none;
+  }
+  .issues-list {
+    a {
+      color: $orange;
+    }
+  }
+  .categories {
+    h4 {
+      color: $orange;
+      margin-top: 0;
+    }
+    a {
+      color: black;
+    }
   }
 }
 
@@ -42,16 +68,31 @@ div.count-status {
 }
 
 div.statistics {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: $kaki;
   .total {
-    span {
+    border: 1px solid #D4D3BD;
+    position: relative;
+    padding: 10px;
+    .count {
+      width: 100%;
       font-size: 50px;
+      color: $orange;
     }
   }
 }
 
 div.footer {
-  padding-top: 30px;
+  background: black;
+  padding-top: 20px;
   padding-bottom: 20px;
+  h3, h4 {
+    color: $orange;
+  }
+  a {
+    color: #ffffff;
+  }
 }
 
 div.issue-details {

@@ -1,21 +1,23 @@
-<div class="issues">
-  <div class="row">
-    <div class="col-sm-9">
-      <div class="row">
-        <%= render(issues) %>
-      </div>
-      <% if request.original_url == root_url %>
-        <div class="text-center">
-          <%= link_to 'Prezerať ďalšie problémy', issues_path, class: 'btn btn-primary' %>
+<div class="container">
+  <div class="issues">
+    <div class="row">
+      <div class="col-sm-9 issues-list">
+        <div class="row">
+          <%= render(issues) %>
         </div>
-      <% end %>
-    </div>
-    <div class="col-sm-3 categories-sidebar">
-      <h3>Oblasti problémov</h3>
-      <ul class="list-unstyled">
-        <li><%= link_to 'Všetko', issues_path %></li>
-        <%= render collection: categories, partial: 'sidebar_category' %>
-      </ul>
+        <% if request.original_url == root_url %>
+          <div class="text-center">
+            <%= link_to 'Prezerať ďalšie problémy', issues_path, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-3 categories">
+        <h4>Oblasti problémov</h4>
+        <ul class="list-unstyled">
+          <li><%= link_to 'Všetko', issues_path %></li>
+          <%= render collection: categories, partial: 'sidebar_category' %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

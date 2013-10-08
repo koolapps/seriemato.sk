@@ -1,26 +1,32 @@
 <div class="statistics">
-  <div class="row">
-    <div class="col-sm-2 total">
-      <div>Celkový počet problémov:</div>
-      <span class="total-issues"><%= @index_page.statistics.total_issues %></span>
-    </div>
-    <div class="col-sm-2 total">
-      <div>Celkový počet seriemato:</div>
-      <span class="total-smts"><%= @index_page.statistics.total_smts%></span>
-    </div>
-    <div class="col-sm-4">
-      <ul class="list-unstyled">
-        <li><%= link_to_issue_if @index_page.statistics.latest_issue, 'Najnovší problém:' %></li>
-        <li>Nových problémov za týždeň: <%= @index_page.statistics.last_week_issues_count %></li>
-        <li><%= link_to_issue_if @index_page.statistics.top_issue_by_smts, 'Najviac ľudí kliklo seriemato:' %></li>
-      </ul>
-    </div>
-    <div class="col-sm-4">
-      <ul class="list-unstyled">
-        <li><%= link_to_issue_if @index_page.statistics.last_week_top_issue_by_smts, 'Tento týždeň najviac serie:' %></li>
-        <li><%= link_to_issue_if @index_page.statistics.lowest_issue_by_smts, 'Čo nikoho neserie:' %></li>
-        <li><%= link_to_category_if @index_page.statistics.top_category, 'Top téma:' %></li>
-      </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="total text-center">
+          <div>Celkový počet problémov</div>
+          <div class="count text-center total-issues"><%= @index_page.statistics.total_issues %></div>
+        </div>
+      </div>
+      <div class="col-sm-2 text-center">
+        <div class="total">
+          <div>Celkový počet seriemato</div>
+          <div class="count text-center total-smts"><%= @index_page.statistics.total_smts%></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <ul class="list-unstyled">
+          <li><%= link_to_issue_if @index_page.statistics.latest_issue, 'Najnovší problém:' %></li>
+          <li>Nových problémov za týždeň: <%= @index_page.statistics.last_week_issues_count %></li>
+          <li><%= link_to_issue_if @index_page.statistics.top_issue_by_smts, 'Najviac ľudí kliklo seriemato:' %></li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <ul class="list-unstyled">
+          <li><%= link_to_issue_if @index_page.statistics.last_week_top_issue_by_smts, 'Tento týždeň najviac serie:' %></li>
+          <li><%= link_to_issue_if @index_page.statistics.lowest_issue_by_smts, 'Čo nikoho neserie:' %></li>
+          <li><%= link_to_category_if @index_page.statistics.top_category, 'Top téma:' %></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

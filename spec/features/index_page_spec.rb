@@ -40,7 +40,7 @@ feature 'Index page' do
                               )
     visit root_path
     within "div#issue_#{issue.id}" do
-      expect(page).to have_css 'h3', text: 'My Issue'
+      expect(page).to have_css 'h4', text: 'My Issue'
       expect(page).to have_css 'p', text: 'This is my issue'
       expect(page).to have_css 'a img[src*="large_picture.jpg"]'
       expect(page).to have_link issue.name, href: issue_path(issue)
@@ -62,8 +62,8 @@ feature 'Index page' do
   scenario 'has category list in in sidebar' do
     2.times { FactoryGirl.create(:category) }
     visit root_path
-    within 'div.categories-sidebar' do
-      expect(page).to have_css 'h3', text: 'Oblasti problémov'
+    within 'div.categories' do
+      expect(page).to have_css 'h4', text: 'Oblasti problémov'
       expect(page).to have_link 'Všetko', issues_path
       Category.all.each do |category|
         expect(page).to have_link category.name, category_path(category)

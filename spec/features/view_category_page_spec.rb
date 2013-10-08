@@ -9,7 +9,7 @@ feature 'Viewing issues in category' do
     within "#issue_#{issue.id}" do
       expect(page).to have_link issue.name, href: issue_path(issue)
     end
-    within '.categories-sidebar' do
+    within '.categories' do
       expect(page).to have_link category.name, href: category_path(category)
     end
   end
