@@ -19,7 +19,7 @@ feature 'Click on "Chcem to riesit" button', js: true do
     expect(page).to have_css 'div.form-errors'
   end
 
-  scenario 'sign up as solver with valid data saves user data' do
+  scenario 'sign up as solver with valid data saves user data to cookies' do
     visit_issue_and_click_solvers_link
     fill_and_save_user_data
     click_link 'Chcem to riešiť'

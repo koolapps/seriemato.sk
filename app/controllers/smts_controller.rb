@@ -1,9 +1,11 @@
 class SmtsController < ApplicationController
+  include Restorable
+
   SAVE_DATA_AND_VOTE = 'Uložiť údaje a hlasovať'
 
   def new
     @smt = issue.smts.build
-    restore_user_data_from_cookies
+    restore_user_data
   end
 
   def create
@@ -15,7 +17,7 @@ class SmtsController < ApplicationController
 
     if @smt.save
       flash[:success] = 'Ďakujeme! Váš hlas bol započítaný.'
-      save_user_data_to_cookies
+      save_user_data
     else
       render 'new'
     end
@@ -33,19 +35,11 @@ class SmtsController < ApplicationController
       permit(:sex, :year_of_birth, :city, :job, :email)
   end
 
-  def save_user_data_to_cookies
-    cookies[:smt_sex] = { value: smt_params[:sex], expires: 3.months.from_now }
-    cookies[:smt_year_of_birth] = { value: smt_params[:year_of_birth], expires: 3.months.from_now }
-    cookies[:smt_job] = { value: smt_params[:job], expires: 3.months.from_now }
-    cookies[:smt_city] = { value: smt_params[:city], expires: 3.months.from_now }
-    cookies[:smt_email] = { value: smt_params[:email], expires: 3.months.from_now }
+  def resource
+    @smt
   end
 
-  def restore_user_data_from_cookies
-    @smt.sex = cookies[:smt_sex]
-    @smt.year_of_birth = cookies[:smt_year_of_birth]
-    @smt.job = cookies[:smt_job]
-    @smt.city = cookies[:smt_city]
-    @smt.email = cookies[:smt_email]
+  def attributes_to_save
+    [:sex, :year_of_birth, :job, :city, :email]
   end
 end

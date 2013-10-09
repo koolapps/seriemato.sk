@@ -1,9 +1,11 @@
 class SolversController < ApplicationController
+  include Restorable
+
   helper_method :show_long_text?
 
   def new
     @solver = issue.solvers.build
-    restore_user_data_from_cookies
+    restore_user_data
   end
 
   def create
@@ -11,7 +13,8 @@ class SolversController < ApplicationController
 
     if @solver.save
       flash[:success] = 'Ďakujeme! Boli ste pridaný na zoznam riešiteľov tohto problému.'
-      save_user_data_to_cookies
+      save_user_data
+      cookies[:solver_saw_long_text?] = { value: true, expires: 3.months.from_now }
     else
       render 'new'
     end
@@ -27,17 +30,12 @@ class SolversController < ApplicationController
     Issue.find(params[:issue_id])
   end
 
-  def save_user_data_to_cookies
-    cookies[:solver_first_name] = { value: solver_params[:first_name], expires: 3.months.from_now }
-    cookies[:solver_last_name] = { value: solver_params[:last_name], expires: 3.months.from_now }
-    cookies[:solver_email] = { value: solver_params[:email], expires: 3.months.from_now }
-    cookies[:solver_saw_long_text?] = true
+  def resource
+    @solver
   end
 
-  def restore_user_data_from_cookies
-    @solver.first_name = cookies[:solver_first_name]
-    @solver.last_name = cookies[:solver_last_name]
-    @solver.email = cookies[:solver_email]
+  def attributes_to_save
+    [:first_name, :last_name, :email]
   end
 
   def show_long_text?
