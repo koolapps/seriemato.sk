@@ -1,9 +1,18 @@
 module Restorable
+  extend ActiveSupport::Concern
+
+  included do
+    before_filter :restore_user_data, only: [:new]
+    before_filter :save_user_data, only: [:create, :update]
+  end
+
   private
 
   def save_user_data
-    attributes_to_save.each do |attribute|
-      cookies[cookie_name(attribute)] = { value: resource.send(attribute), expires: 3.months.from_now }
+    if resource.valid?
+      attributes_to_save.each do |attribute|
+        cookies[cookie_name(attribute)] = { value: resource.send(attribute), expires: 3.months.from_now }
+      end
     end
   end
 

@@ -4,8 +4,6 @@ class SmtsController < ApplicationController
   SAVE_DATA_AND_VOTE = 'Uložiť údaje a hlasovať'
 
   def new
-    @smt = issue.smts.build
-    restore_user_data
   end
 
   def create
@@ -17,7 +15,6 @@ class SmtsController < ApplicationController
 
     if @smt.save
       flash[:success] = 'Ďakujeme! Váš hlas bol započítaný.'
-      save_user_data
     else
       render 'new'
     end
@@ -36,7 +33,11 @@ class SmtsController < ApplicationController
   end
 
   def resource
-    @smt
+    if params[:smt]
+      @smt ||= issue.smts.build(smt_params)
+    else
+      @smt ||= issue.smts.build
+    end
   end
 
   def attributes_to_save

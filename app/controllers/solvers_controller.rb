@@ -4,16 +4,11 @@ class SolversController < ApplicationController
   helper_method :show_long_text?
 
   def new
-    @solver = issue.solvers.build
-    restore_user_data
   end
 
   def create
-    @solver = issue.solvers.build(solver_params)
-
     if @solver.save
       flash[:success] = 'Ďakujeme! Boli ste pridaný na zoznam riešiteľov tohto problému.'
-      save_user_data
       cookies[:solver_saw_long_text?] = { value: true, expires: 3.months.from_now }
     else
       render 'new'
@@ -31,7 +26,11 @@ class SolversController < ApplicationController
   end
 
   def resource
-    @solver
+    if params[:solver]
+      @solver ||= issue.solvers.build(solver_params)
+    else
+      @solver ||= issue.solvers.build
+    end
   end
 
   def attributes_to_save
