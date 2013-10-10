@@ -59,6 +59,8 @@
         </div>
       </div> 
     </div>
-    <script src="https://trackduck.azurewebsites.net/assets/6964f2fa696c4c2d909b3972feda245a"></script>
+    <% if Rails.env.production? %>
+      <script src="https://trackduck.azurewebsites.net/assets/6964f2fa696c4c2d909b3972feda245a"></script>
+    <% end %>
   </body>
 </html>
