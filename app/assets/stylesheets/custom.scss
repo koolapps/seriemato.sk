@@ -47,6 +47,14 @@ div.explanation {
     a {
       color: $orange;
     }
+    a.btn-primary {
+      color: #ffffff;
+    }
+    .issue {
+      .row {
+        margin-bottom: 0;
+      }
+    }
   }
   .categories {
     h4 {
@@ -68,6 +76,7 @@ div.count-status {
 }
 
 div.statistics {
+  margin-bottom: -20px;
   padding-top: 20px;
   padding-bottom: 20px;
   background: $kaki;
@@ -85,6 +94,7 @@ div.statistics {
 
 div.footer {
   background: black;
+  margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
   h3, h4 {
