@@ -49,13 +49,13 @@ FactoryGirl.define do
   end
 
   factory :smt do
-    issue nil
+    issue
   end
 
   factory :solver do
     first_name 'John'
     last_name 'Doe'
     email 'john.doe@example.com'
-    issue nil
+    issue
   end
 end

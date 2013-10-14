@@ -43,6 +43,13 @@ describe Issue do
     expect(issue.smts_count).to be 3
   end
 
+  it 'updates solvers_count with real + fake solvers before save' do
+    issue = FactoryGirl.create(:issue_with_solvers, solvers_count: 1)
+    issue.fake_solvers = 2
+    issue.save
+    expect(issue.solvers_count).to be 3
+  end
+
   describe 'default scope' do
     it 'returns just published issues' do
       published_issue = FactoryGirl.create(:issue, published: true)
@@ -87,6 +94,20 @@ describe Issue do
       issue = FactoryGirl.create(:issue, fake_smts: 10)
       FactoryGirl.create(:smt, issue: issue)
       expect(issue.smts_count).to eq 11
+    end
+  end
+
+  describe '#solvers_count' do
+    it 'returns number of solvers' do
+      issue = FactoryGirl.create(:issue)
+      FactoryGirl.create(:solver, issue: issue)
+      expect(issue.solvers_count).to eq 1
+    end
+
+    it 'adds fake solvers to total SMT count' do
+      issue = FactoryGirl.create(:issue, fake_solvers: 10)
+      FactoryGirl.create(:solver, issue: issue)
+      expect(issue.solvers_count).to eq 11
     end
   end
 

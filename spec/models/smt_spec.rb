@@ -13,6 +13,11 @@ describe Smt do
     it_should_be_invalid_without(:city)
   end
 
+  it 'has valid factory' do
+    smt = FactoryGirl.create(:smt)
+    expect(smt).to be_valid
+  end
+
   it 'updates smts_count of parent issue' do
     issue = FactoryGirl.create(:issue)
     FactoryGirl.create(:smt, issue: issue)

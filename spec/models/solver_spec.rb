@@ -13,6 +13,12 @@ describe Solver do
     expect(solver).to be_valid
   end
 
+  it 'updates solvers_count of parent issue' do
+    issue = FactoryGirl.create(:issue)
+    FactoryGirl.create(:solver, issue: issue)
+    expect(issue.solvers_count).to be 1
+  end
+
   describe '#issue' do
     it 'return issue even if it is not published (unscoped query)' do
       issue = FactoryGirl.create(:issue, published: false)

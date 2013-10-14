@@ -14,6 +14,7 @@ class Issue < ActiveRecord::Base
   validates :smt_limit, :solvers_limit, numericality: { only_integer: true }
 
   after_save :update_smts_count
+  after_save :update_solvers_count
 
   def self.default_scope
     where('published IS true')
@@ -21,11 +22,6 @@ class Issue < ActiveRecord::Base
 
   def related_issues
     Issue.where("category_id = ? AND id != ?", self.category_id, self.id)
-  end
-
-
-  def solvers_count
-    add_fake_value(solvers.count, fake_solvers)
   end
 
   def smt_progress_in_percent
@@ -39,7 +35,6 @@ class Issue < ActiveRecord::Base
   def self.randoms
     order('random()').limit(8)
   end
-
 
   private
 
@@ -62,4 +57,13 @@ class Issue < ActiveRecord::Base
   def smts_count_with_fake_value
     add_fake_value(smts.count, fake_smts)
   end
+
+  def update_solvers_count
+    self.update_column :solvers_count, solvers_count_with_fake_value
+  end
+
+  def solvers_count_with_fake_value
+    add_fake_value(solvers.count, fake_solvers)
+  end
+
 end
