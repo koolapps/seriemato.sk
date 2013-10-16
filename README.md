@@ -1,4 +1,4 @@
-# seriemato!.sk
+# seriemato!sk
 
 Goal of the whole project is to connect people and work on social issues in Slovakia.
 
