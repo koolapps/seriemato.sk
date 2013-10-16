@@ -1,24 +1,26 @@
-== seriemato!.sk
+# seriemato!.sk
+
+Goal of the whole project is to connect people and work on social issues in Slovakia.
 
 Currently site lives here: http://seriemato.herokuapp.com
 
 Final destination will be: http://www.seriemato.sk
 
-=== Technical specification
+### Technical specification
 
 * Ruby 2.0.0
 * Rails 4.0.0
 * Tested with RSpec, capybara and capybara-webkit (for javascrip tests)
 * Design is bootstrapped with [Bootstrap](http://getbootstrap.com/)
 
-=== How to contribute?
+### How to contribute?
 
 * fork this repo
 * create your feature branch
 * create test and make it pass
 * create pull request
 
-==== Or
+#### Or
 
 I would be happy to give you the ownership of the whole project! So you can be the owner of seriemato!sk (from technical point of view ;)
 
