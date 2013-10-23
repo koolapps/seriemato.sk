@@ -66,7 +66,4 @@ feature 'SerieMaTo votes' do
     expect(page).to have_css 'div.form-errors'
     expect(page).to have_css '.smt-count', text: 0
   end
-
-  scenario 'click on SMT button increase SMT count just once for each user'
-
 end
