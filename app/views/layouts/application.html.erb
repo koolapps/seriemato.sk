@@ -5,14 +5,14 @@
 
     <%= render 'header_menu' %>
 
-    <%= render 'flash' %>
-
     <div class="explanation text-center">
       <div class="container">
         <%= image_tag 'explanation.png' %>
         <%= link_to 'bližšie vysvetlenie', page_path('about'), class: 'btn btn-primary btn-lg' %>
       </div>
     </div>
+
+    <%= render 'flash' %>
 
     <%= yield %>
 

@@ -14,7 +14,7 @@ img {
 
 nav.navbar.navbar-default {
   background-color: #ffffff;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   .navbar-brand {
     padding: 0 15px 5px 15px; 
   }
@@ -29,6 +29,7 @@ div.explanation {
   background: $kaki;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-top: -20px;
   margin-bottom: 20px;
   img {
     max-width: 100%;
