@@ -32,6 +32,7 @@ end
 group :test do
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :production do

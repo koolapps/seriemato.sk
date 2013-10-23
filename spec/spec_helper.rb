@@ -15,20 +15,6 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  if Object.const_defined?('ActiveRecord')
-    class ActiveRecord::Base
-      mattr_accessor :shared_connection
-      @@shared_connection = nil
-
-      def self.connection
-        @@shared_connection || retrieve_connection
-      end
-    end
-
-    # Forces all threads to share the same connection. This works on
-    # Capybara because it starts the web server in a thread.
-    ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
-  end
 end
 
 # --- Instructions ---
@@ -92,7 +78,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
