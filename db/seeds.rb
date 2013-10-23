@@ -26,6 +26,7 @@ end
     solvers_limit: rand(20) + 10,
     fake_smts: rand(10),
     fake_solvers: rand(10),
-    category: categories.sample
+    category: categories.sample,
+    published: true
   )
 end
