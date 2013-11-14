@@ -17,7 +17,7 @@ gem 'haml'
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'spork'
+  gem 'spork-rails', git: 'https://github.com/sporkrb/spork-rails'
   gem 'factory_girl_rails'
 end
 
