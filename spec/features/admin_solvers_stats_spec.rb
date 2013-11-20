@@ -18,6 +18,7 @@ feature 'Solvers stats' do
       expect(page).to have_content 'John'
       expect(page).to have_content 'Doe'
       expect(page).to have_content 'john.doe@example.com'
+      expect(page).to have_content Time.now.strftime '%Y-%m-%d'
     end
   end
 end

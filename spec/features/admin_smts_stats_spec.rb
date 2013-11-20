@@ -21,6 +21,7 @@ feature 'Smts stats' do
       expect(page).to have_content 'BA'
       expect(page).to have_content 'programmer'
       expect(page).to have_content 'user@example.com'
+      expect(page).to have_content Time.now.strftime '%Y-%m-%d'
     end
   end
 end
